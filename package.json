@@ -1,0 +1,11 @@
+{
+  "name": "module-handbook",
+  "version": "1.0.0",
+  "description": "A Module Handbook coordinating authoring module descriptions and helping students planning their studies.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Barne Kleinen",
+  "license": "MIT"
+}
