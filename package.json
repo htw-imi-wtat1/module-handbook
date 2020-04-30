@@ -1,11 +1,20 @@
 {
   "name": "module-handbook",
   "version": "1.0.0",
-  "description": "A Module Handbook coordinating authoring module descriptions and helping students planning their studies.",
+  "description": "A Module Handbook App for supporting collaborative module handbook authoring and summaries for studies.",
   "main": "main.js",
   "scripts": {
+    "run dev": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Barne Kleinen",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "http-status-codes": "^1.4.0",
+    "nodemon": "^2.0.3"
+  }
 }
