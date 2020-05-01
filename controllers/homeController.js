@@ -367,7 +367,7 @@ const modules = [{
     "code": "B20",
     "name": "Praxisphase 1:  Fachpraktikum im  Ausland",
     "mission": null,
-    "ects": 0,
+    "ects": 25,
     "examination": null,
     "objectives": null,
     "contents": null,
@@ -405,7 +405,7 @@ const modules = [{
     "code": "B20.2",
     "name": "Fachpraktikum",
     "mission": null,
-    "ects": 0,
+    "ects": 25,
     "examination": null,
     "objectives": null,
     "contents": null,
@@ -481,7 +481,7 @@ const modules = [{
     "code": "B24.1",
     "name": "Praxisphase 2:Praxisprojekt",
     "mission": null,
-    "ects": 1,
+    "ects": 15,
     "examination": null,
     "objectives": null,
     "contents": null,
@@ -882,11 +882,14 @@ exports.showIndex = (req, res) => {
 exports.showStudentView = (req, res) => {
 
     //console.log(req.params);
-    //console.log(req.params.p);
+    console.log(req.params.format);
     //console.log("path: " + req.path);
     //console.log("url: " + req.url);
     //console.log(req.route)
-    res.render("students", {
+    const requestedView = req.params.format || "list";
+    console.log(requestedView);
+    const view = "modules_" + requestedView;
+    res.render(view, {
         modules: modules,
         studentProgress: studentProgress,
         defaultStatus: defaultStudentProgress

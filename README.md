@@ -43,11 +43,12 @@ implement it using layouts and partials.
 
 ### Passing Parameters in Routes
 
-Find one Story that can make use of a parameter passed in a route and implement it.
+| 014 | As a student, I can see the whole study plan in a tabular view. 
 
-| 003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                 |          |                      |
+I make use of passing parameters via the route to switch between the two view options. The controller switches to 
+a different view template depending on the parameter.
+(I've also renamed the route from students to modules)
 
-- also used for Story 003, to just pass the role as a parameter to the view.
 
 ### Displaying Dynamic Content
 

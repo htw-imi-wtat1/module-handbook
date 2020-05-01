@@ -23,7 +23,8 @@ app.set("port", process.env.PORT || 3002);
 
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menu_items = [
-    {path: "/students", text: "Student's View"},
+    {path: "/modules/list", text: "Module List"},
+    {path: "/modules/tabular", text: "Module Table"},
     {path: "/about", text: "About"}
 ];
 app.use(function (req, res, next) {
@@ -34,7 +35,7 @@ app.use(function (req, res, next) {
     }
     next();
 });
-app.get("/students/", homeController.showStudentView);
+app.get("/modules/:format?", homeController.showStudentView);
 app.get("/about/", homeController.showAbout);
 app.get("/", homeController.showIndex);
 

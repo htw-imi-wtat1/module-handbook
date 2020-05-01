@@ -1,0 +1,33 @@
+<h1>Student's View</h1>
+<table class="table">
+
+    <%
+    const state_class = {
+        "none": "light",
+        "passed": "success",
+        "enrolled": "warning",
+        "planned": "info",
+        "none": "dark"
+    };
+
+    [1, 2, 3, 4, 5, 6].forEach(semester => {
+        let modules_in_semester = modules.filter(m => {
+            return m.semester == semester
+        });
+        %>
+    <tr>  <td><%= semester %></td>
+    <%
+    modules_in_semester.forEach(module => {
+        const status = studentProgress.find(sp => {
+            return sp.code == module.code
+        }) || defaultStatus;
+    %>
+
+        <td class="table-<%= state_class[status.status] %>"><%= module.code %><br/><%= module.name %><br/><%= module.ects %></td>
+        <% }) // for module %>
+    </tr>
+    <% }) // for semester %>
+
+
+
+    </table>
