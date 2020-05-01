@@ -882,12 +882,12 @@ exports.showIndex = (req, res) => {
 exports.showStudentView = (req, res) => {
 
     //console.log(req.params);
-    console.log(req.params.format);
+    //console.log(req.params.format);
     //console.log("path: " + req.path);
     //console.log("url: " + req.url);
     //console.log(req.route)
     const requestedView = req.params.format || "list";
-    console.log(requestedView);
+   // console.log(requestedView);
     const view = "modules_" + requestedView;
     res.render(view, {
         modules: modules,
