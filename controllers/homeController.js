@@ -875,14 +875,19 @@ const defaultStudentProgress = {
     status: "none"
 }
 
+
+exports.showIndex = (req, res) => {
+    res.render("index",{currentPath: req.path});
+}
 exports.showStudentView = (req, res) => {
     res.render("students", {
         modules: modules,
         studentProgress: studentProgress,
-        defaultStatus: defaultStudentProgress
+        defaultStatus: defaultStudentProgress,
+        currentPath: req.path
     });
 }
 exports.showAbout = (req, res) => {
-    res.render("about");
+    res.render("about", {currentPath: req.path});
 }
 

@@ -36,7 +36,17 @@ commonalities and differences.
 
 ### Layouts and Partials
 
-Look at your whole backlog and choose a story or more that requires a different view from your first stories, and implement it using layouts and partials.
+Look at your whole backlog and choose a story or more that requires a different view from your first stories, and 
+implement it using layouts and partials.
+
+- created layout.js and adapted views
+- as there are two mayor roles in the module handbook - students and staff/teachers that edit modules and programs, 
+the app will need two different kinds of main navigation. Thus, I create partials for the navigation, and pick one exemplary story to start off with that: 
+
+| 003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                 |          |                      |
+
+As there are no means for representing the user roles yet, I left the example with a modular structure for the main navigation 
+in partials/navigation.ejs and partials/navigation_item.ejs together with a mechanism to show the active item.
 
 ### Passing Parameters in Routes
 
@@ -56,7 +66,7 @@ For implementing this, I will touch story 023 again and fill it with complete co
 | #   | Story                                                                                                                                                                                                | Sprint   | Status               |
 |:----|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|:---------------------|
 | 042 | As a student or lecturer, I see an overview of the whole study program with all modules including Title, Format and ECTS on the site.                                                                | Sprint 1 | Basic Implementation |
-| 023 | As a student, I can quickly get an overview of the my progress within the study program.                                                                                                             | Sprint 1 | Basic Implementation |
+| 023 | As a student, I can quickly get an overview of the my progress within the study program.                                                                                                             | Sprint 1,2 | Basic Implementation, Data From Controller|
 | 001 | As a member of a consortium, I can edit module descriptions assigned to me such that they are immediately visible to my colleagues and everyone is clear about the newest version of the curriculum. |          |                      |
 | 002 | As someone responsible for the study program, I find a structure for module descriptions that aids me to design my modules in a way that is prepared for program accreditation.                      |          |                      |
 | 003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                 |          |                      |
