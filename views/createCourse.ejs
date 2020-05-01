@@ -1,0 +1,15 @@
+
+<div class="container">
+    Edit Course:
+<form action="/courses" , method="post">
+
+    <% fields.forEach( field => { %>
+        <div class="form-group">
+            <label for="<%= field %>"><%= field %></label>
+            <textarea class="form-control" id="<%= field %>" rows="3"><%= course[field] %></textarea>
+        </div>
+
+    <% }); %>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
