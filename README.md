@@ -10,10 +10,14 @@
     
 # Sprint 03
 
-This sprint is about persisting data in the database. 
+This sprint is about persisting data in the database.  
 As I finally want my modules in the database, I will implement the story
 
-Story_003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                               |
+| 015 | As a program creator, I can create new Courses for a program.
+
+Note that this week is just about retrieving data and creating new simple records.
+I've also created an example below how the database can be populated with test data using
+mongoimport (not in the book).
 
 ## Mongo Installation
 
@@ -24,8 +28,7 @@ Story_003 | As a Program or Module manager, I can update module descriptions for
     run npm mongobash // runs docker-compose exec mongo bash
     run npm mongo // docker-compose up -d
    
-   
-
+  
 
 ## Mongo Commands
 
@@ -127,7 +130,7 @@ For implementing this, I will touch story 023 again and fill it with complete co
 | 012 | As an Administrator, I can add or approve new users to the module database.                                                                                                                          |          |                      |
 | 013 | As an Administrator, I can change all roles of all users in the module database.
 | 014 | As a student, I can see the whole course program in a tabular view.                                                                                                                    |          |                      |
-
+| 015 | As a program creator, I can create new Courses for a program.
 ## Roles in the App
 
 Administrator
