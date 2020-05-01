@@ -46,13 +46,11 @@ Find one Story that can make use of a parameter passed in a route and implement 
 
 Find a Story that can make use of Passing content from the controller to the view and displaying it with a view template.
 
+For implementing this, I will touch story 023 again and fill it with complete courses information.
 
-
-Sprint 02: Technical Steps (Topic)
-- Routing in Express
-- MVC
-- view templates, layouts and partials
-- handling errors and serving static pages
+#### 023 - As a student, I can quickly get an overview of my progress within the study program. 
+                                                                                                            
+- created content in homeController.js and added it to the [student's view](http://localhost:3002/students) 
 
 ## Backlog
 | #   | Story                                                                                                                                                                                                | Sprint   | Status               |

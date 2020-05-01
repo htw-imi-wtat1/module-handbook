@@ -1,19 +1,41 @@
 <h1>Student's View</h1>
-<table class = "table">
-<tr>
+<table class="table">
+    <tr>
+        <th>S.</th>
+        <th>Code</th>
+        <th>Modulbezeichnung</th>
 
-<th>Nr.</th><th>Modulbezeichnung</th><th>Art</th><th>FormS</th><th>WS</th><th>LP</th><th>Status</th>
-</tr>
-<tr class="table-success"><td>B1</td><td>Informatik 1</td><td>P</td><td>SL/Ü</td><td>4/2</td><td>6</td><td>Passed WS19/20</td>
-</tr>
-<tr class="table-success"><td>B2</td><td>Computersysteme</td><td>P</td><td>SL/Ü</td><td>2/2</td><td>5</td><td>Passed WS19/20</td>
-</tr>
-<tr class="table-warning"><td>B3</td><td>Propädeutikum und Medientheorie</td><td>P</td><td>SL/Ü</td><td>2/2</td><td>5</td><td>Belegt WS19/20</td>
-</tr>
-<tr><td>B4</td><td>Mathematik für Medieninformatik 1</td><td>P</td><td>SL/Ü</td><td>2/2</td><td>5</td><td></td>
-</tr>
-<tr class="table-success"><td>B5</td><td>Grundlagen der Webprogrammierung</td><td>P</td><td>SL/Ü</td><td>2/2</td><td>5</td><td>Passed WS19/20</td>
-</tr>
-<tr><td>B6</td><td>1. Fremdsprache</td><td>1</td><td>WP Ü</td><td>4</td><td>4</td> </td>
-  </tr>
+        <th>Art</th>
+        <th>Form</th>
+        <th>LP</th>
+        <th>Semester</th>
+        <th>Status</th>
+    </tr>
+
+    <%
+    const state_class = {
+        "none": "light",
+        "passed": "success",
+        "enrolled": "warning",
+        "planned": "info"
+    };
+    modules.forEach(module => {
+        const status = studentProgress.find(sp => {
+            return sp.code == module.code
+        }) || defaultStatus;
+    %>
+    <tr class="table-<%= state_class[status.status] %>">
+        <td><%= module.semester %></td>
+        <td><%= module.code %></td>
+        <td><%= module.name %></td>
+        <td><%= module.required %></td>
+        <td><%= module.methods %></td>
+        <td><%= module.ects %></td>
+        <td><%= status.semester %></td>
+        <td><%= status.status %></td>
+    </tr>
+
+    <% }); // courses.forEach  %>
+
+
 </table>

@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.json());
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
     res.render("index");
 });
