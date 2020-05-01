@@ -5,6 +5,8 @@
   "main": "main.js",
   "scripts": {
     "run dev": "nodemon main.js",
+    "mongo": "docker-compose up -d",
+    "mongobash": "docker-compose exec mongo bash",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Barne Kleinen",
