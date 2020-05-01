@@ -3,7 +3,8 @@
 const express = require("express"),
     app = express(),
     homeController = require("./controllers/homeController"),
-    // errorController = require("./controllers/errorController"),
+    searchController = require("./controllers/searchController"),
+    errorController = require("./controllers/errorController"),
     layouts = require("express-ejs-layouts");
 
 app.set("view engine", "ejs");
@@ -37,7 +38,11 @@ app.use(function (req, res, next) {
 });
 app.get("/modules/:format?", homeController.showStudentView);
 app.get("/about/", homeController.showAbout);
+app.post("/about", searchController.search);
 app.get("/", homeController.showIndex);
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);
 
 app.listen(app.get("port"), () => {
     console.log(`Server running at http://localhost:${app.get("port")}`);
