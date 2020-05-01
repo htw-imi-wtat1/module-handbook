@@ -7,9 +7,49 @@
 * start with
 
     nodemon main.js
+    
 # Sprint 03
 
-## Mongo installation: 
+This sprint is about persisting data in the database. 
+As I finally want my modules in the database, I will implement the story
+
+Story_003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                               |
+
+## Mongo Installation
+
+- installed mongo with docker, see docker-compose.yml
+- added aliases to package.json
+
+
+    run npm mongobash // runs docker-compose exec mongo bash
+    run npm mongo // docker-compose up -d
+   
+   
+
+
+## Mongo Commands
+
+after starting the cli with ``mongo``
+
+    show dbs
+    use courses
+    show collections
+    db.courses.findOne
+    db.courses.deleteMany({})
+    db.courses.update(..)
+    
+## Seeding the database
+
+( in the mongo container:)
+
+    
+    mongoimport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses data/seed/tryout
+    mongoexport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses  > data/seed/export    
+
+## Documentation
+- Mongoose: https://mongoosejs.com/
+- Mongoose getting started: https://mongoosejs.com/docs/index.html
+- Schematypes: https://mongoosejs.com/docs/schematypes.html
 
 
 # Sprint 01 & 02

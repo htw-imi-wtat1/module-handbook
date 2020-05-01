@@ -5,7 +5,9 @@ const express = require("express"),
     homeController = require("./controllers/homeController"),
     searchController = require("./controllers/searchController"),
     errorController = require("./controllers/errorController"),
+    coursesController = require("./controllers/coursesController"),
     layouts = require("express-ejs-layouts");
+
 
 app.set("view engine", "ejs");
 app.use(layouts);
@@ -15,6 +17,18 @@ app.use(
         extended: false
     })
 );
+
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/modulehandbook_db",
+    {useNewUrlParser: true, useUnifiedTopology: true}
+);
+const Course = require("./models/course");
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once("open", () => {
+    console.log("Successfully connected to MongoDB using Mongoose!");
+});
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
@@ -26,6 +40,7 @@ app.set("port", process.env.PORT || 3002);
 const menu_items = [
     {path: "/modules/list", text: "Module List"},
     {path: "/modules/tabular", text: "Module Table"},
+    {path: "/courses", text: "Courses"},
     {path: "/about", text: "About"}
 ];
 app.use(function (req, res, next) {
@@ -40,6 +55,12 @@ app.get("/modules/:format?", homeController.showStudentView);
 app.get("/about/", homeController.showAbout);
 app.post("/about", searchController.search);
 app.get("/", homeController.showIndex);
+
+app.get("/courses", coursesController.getAllCourses,
+    (req,res,next) => {
+    console.log(req.data);
+    res.send(req.data);
+    })
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

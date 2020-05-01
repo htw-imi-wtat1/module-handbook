@@ -8,7 +8,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=
       - MONGO_INITDB_ROOT_PASSWORD=
     volumes:
-      - ./mongo-data:/data/db
-      - ./mongo-config:/data/configdb
+      - ./mongo/data:/data/db
+      - ./mongo/seed:/data/seed
+      - ./mongo/config:/data/configdb
     ports:
       - 27017-27019:27017-27019

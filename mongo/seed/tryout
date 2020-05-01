@@ -1,0 +1,41 @@
+{
+    "semester": 1,
+    "required": "required",
+    "code": "B1",
+    "name": "Informatik  1",
+    "mission": null,
+    "ects": 4,
+    "examination": null,
+    "objectives": null,
+    "contents": null,
+    "prerequisites": null,
+    "literature": null,
+    "methods": "P SL/Ü",
+    "skills_knowledge_understanding": null,
+    "skills_intellectual": null,
+    "skills_practical": null,
+    "skills_general": null,
+    "created_at": "2020-05-01T10:15:24.706Z",
+    "updated_at": "2020-05-01T10:15:24.706Z"
+}
+
+{
+    "semester": 1,
+    "required": "required",
+    "code": "B2",
+    "name": "Computersysteme",
+    "mission": null,
+    "ects": 2,
+    "examination": null,
+    "objectives": null,
+    "contents": null,
+    "prerequisites": null,
+    "literature": null,
+    "methods": "P SL/Ü",
+    "skills_knowledge_understanding": null,
+    "skills_intellectual": null,
+    "skills_practical": null,
+    "skills_general": null,
+    "created_at": "2020-05-01T10:15:24.740Z",
+    "updated_at": "2020-05-01T10:15:24.740Z"
+}
