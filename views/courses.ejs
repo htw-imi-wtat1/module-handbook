@@ -1,5 +1,5 @@
 <h1>Courses</h1>
-<table class="table">
+<table class="table" id = "course_overview">
     <tr>
         <th>S.</th>
         <th>Code</th>
@@ -18,7 +18,7 @@
     };
     courses.forEach(course => {
     %>
-    <tr >
+    <tr onclick = "location.href='course/<%= course.code%>'">
         <td><%= course.semester %></td>
         <td><%= course.code %></td>
         <td><%= course.name %></td>
@@ -28,6 +28,4 @@
     </tr>
 
     <% }); // courses.forEach  %>
-
-
 </table>

@@ -32,6 +32,9 @@ db.once("open", () => {
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static(__dirname + '/node_modules/jquery/dist'));
+app.use(express.static(__dirname + '/node_modules/popper.js/dist'));
+
 app.use(express.json());
 
 app.set("port", process.env.PORT || 3002);

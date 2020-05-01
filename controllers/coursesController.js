@@ -16,7 +16,10 @@ exports.getAllCourses = (req, res, next) => {
     })
 }
 exports.getCourse = (req, res, next) => {
-    Course.findOne({code: 'B9'}, (error, course) => {
+    //console.log(req.params);
+    const code = req.params.id;
+    //const code = 'B2';
+    Course.findOne({code: code}, (error, course) => {
         if (error) next(error);
        // res.send(fields);
         res.render("course", {course: course, fields: fields});
