@@ -60,7 +60,10 @@ app.post("/about", searchController.search);
 app.get("/", homeController.showIndex);
 
 app.get("/courses", coursesController.getAllCourses)
-app.get("/course/:id", coursesController.getCourse)
+app.get("/courses/create", coursesController.createCourse)
+app.post("/courses", coursesController.saveCourse)
+app.get("/courses/:id", coursesController.getCourse)
+
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

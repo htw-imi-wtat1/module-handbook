@@ -1,4 +1,5 @@
 <h1>Courses</h1>
+<h2><a href="courses/create">Create new Course</a></h2>
 <table class="table" id = "course_overview">
     <tr>
         <th>S.</th>
@@ -9,16 +10,8 @@
         <th>LP</th>
     </tr>
 
-    <%
-    const state_class = {
-        "none": "light",
-        "passed": "success",
-        "enrolled": "warning",
-        "planned": "info"
-    };
-    courses.forEach(course => {
-    %>
-    <tr onclick = "location.href='course/<%= course.code%>'">
+    <% courses.forEach(course => { %>
+    <tr onclick = "location.href='courses/<%= course._id%>'">
         <td><%= course.semester %></td>
         <td><%= course.code %></td>
         <td><%= course.name %></td>

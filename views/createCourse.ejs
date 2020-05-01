@@ -6,7 +6,7 @@
     <% fields.forEach( field => { %>
         <div class="form-group">
             <label for="<%= field %>"><%= field %></label>
-            <textarea class="form-control" id="<%= field %>" rows="3"><%= course[field] %></textarea>
+            <textarea class="form-control" name="<%= field %>" rows="3"></textarea>
         </div>
 
     <% }); %>
