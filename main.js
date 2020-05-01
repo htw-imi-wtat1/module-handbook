@@ -15,15 +15,27 @@ app.use(
     })
 );
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.json());
 
 app.set("port", process.env.PORT || 3002);
 
-
-app.get("/students", homeController.showStudentView);
-app.get("/about", homeController.showAbout);
+// from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
+const menu_items = [
+    {path: "/students", text: "Student's View"},
+    {path: "/about", text: "About"}
+];
+app.use(function (req, res, next) {
+    var _render = res.render;
+    res.render = function (view, options, fn) {
+        const newOptions = {...options, currentPath: req.path, menu_items: menu_items};
+        _render.call(this, view, newOptions, fn);
+    }
+    next();
+});
+app.get("/students/", homeController.showStudentView);
+app.get("/about/", homeController.showAbout);
 app.get("/", homeController.showIndex);
 
 app.listen(app.get("port"), () => {

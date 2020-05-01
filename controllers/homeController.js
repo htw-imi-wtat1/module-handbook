@@ -877,17 +877,22 @@ const defaultStudentProgress = {
 
 
 exports.showIndex = (req, res) => {
-    res.render("index",{currentPath: req.path});
+    res.render("index");
 }
 exports.showStudentView = (req, res) => {
+
+    //console.log(req.params);
+    //console.log(req.params.p);
+    //console.log("path: " + req.path);
+    //console.log("url: " + req.url);
+    //console.log(req.route)
     res.render("students", {
         modules: modules,
         studentProgress: studentProgress,
-        defaultStatus: defaultStudentProgress,
-        currentPath: req.path
+        defaultStatus: defaultStudentProgress
     });
 }
 exports.showAbout = (req, res) => {
-    res.render("about", {currentPath: req.path});
+    res.render("about");
 }
 

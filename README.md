@@ -8,7 +8,6 @@
 
     nodemon main.js
 
-
 ## Stories implemented in Sprint 1 (Plain Node App in other repository)
 
 Story_042 - As a student or lecturer, I see an overview of the whole study program with all modules including Title, Format and ECTS on the site.
@@ -40,17 +39,15 @@ Look at your whole backlog and choose a story or more that requires a different 
 implement it using layouts and partials.
 
 - created layout.js and adapted views
-- as there are two mayor roles in the module handbook - students and staff/teachers that edit modules and programs, 
-the app will need two different kinds of main navigation. Thus, I create partials for the navigation, and pick one exemplary story to start off with that: 
-
-| 003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                 |          |                      |
-
-As there are no means for representing the user roles yet, I left the example with a modular structure for the main navigation 
-in partials/navigation.ejs and partials/navigation_item.ejs together with a mechanism to show the active item.
+- made a partial for navigation items, eliminating the need for stating the active path twice for marking active paths.
 
 ### Passing Parameters in Routes
 
 Find one Story that can make use of a parameter passed in a route and implement it.
+
+| 003 | As a Program or Module manager, I can update module descriptions for the forthcoming term such that they I can assure they are current while maintaining a history for former terms.                 |          |                      |
+
+- also used for Story 003, to just pass the role as a parameter to the view.
 
 ### Displaying Dynamic Content
 
@@ -63,6 +60,7 @@ For implementing this, I will touch story 023 again and fill it with complete co
 - created content in homeController.js and added it to the [student's view](http://localhost:3002/students) 
 
 ## Backlog
+
 | #   | Story                                                                                                                                                                                                | Sprint   | Status               |
 |:----|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|:---------------------|
 | 042 | As a student or lecturer, I see an overview of the whole study program with all modules including Title, Format and ECTS on the site.                                                                | Sprint 1 | Basic Implementation |
@@ -80,7 +78,8 @@ For implementing this, I will touch story 023 again and fill it with complete co
 | 010 | As a (Quality /Faculty  / Program / Module) manager I want to be sure that only authorised persons can edit and change the module and program descriptions.                                          |          |                      |
 | 011 | As a (Quality /Faculty  / Program / Module) manager I want to be able to see which changes have been made by whom in the module database.                                                            |          |                      |
 | 012 | As an Administrator, I can add or approve new users to the module database.                                                                                                                          |          |                      |
-| 013 | As an Administrator, I can change all roles of all users in the module database.                                                                                                                     |          |                      |
+| 013 | As an Administrator, I can change all roles of all users in the module database.
+| 014 | As a student, I can see the whole course program in a tabular view.                                                                                                                    |          |                      |
 
 ## Roles in the App
 

@@ -7,10 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <% const menu_items = [
-                {path: "/students", text: "Student's View"},
-                {path: "/about", text: "About"}
-            ];
+            <%
             menu_items.forEach( (mi => { %>
                 <%- include('navigation_item', mi); %>
 
@@ -23,3 +20,4 @@
         </form>
     </div>
 </nav>
+<%= currentPath %>
