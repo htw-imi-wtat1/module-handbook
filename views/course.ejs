@@ -1,0 +1,8 @@
+Course.
+
+<p><%= JSON.stringify(fields) %></p>
+<table>
+    <% fields.forEach( field => { %>
+    <tr><td><%= field %></td><td><%= course[field] %></td></tr>
+    <% }); %>
+</table>

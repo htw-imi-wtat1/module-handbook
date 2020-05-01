@@ -56,11 +56,8 @@ app.get("/about/", homeController.showAbout);
 app.post("/about", searchController.search);
 app.get("/", homeController.showIndex);
 
-app.get("/courses", coursesController.getAllCourses,
-    (req,res,next) => {
-    console.log(req.data);
-    res.send(req.data);
-    })
+app.get("/courses", coursesController.getAllCourses)
+app.get("/course/:id", coursesController.getCourse)
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

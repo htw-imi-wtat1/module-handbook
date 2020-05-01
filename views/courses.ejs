@@ -1,0 +1,33 @@
+<h1>Courses</h1>
+<table class="table">
+    <tr>
+        <th>S.</th>
+        <th>Code</th>
+        <th>Modulbezeichnung</th>
+        <th>Art</th>
+        <th>Form</th>
+        <th>LP</th>
+    </tr>
+
+    <%
+    const state_class = {
+        "none": "light",
+        "passed": "success",
+        "enrolled": "warning",
+        "planned": "info"
+    };
+    courses.forEach(course => {
+    %>
+    <tr >
+        <td><%= course.semester %></td>
+        <td><%= course.code %></td>
+        <td><%= course.name %></td>
+        <td><%= course.required %></td>
+        <td><%= course.methods %></td>
+        <td><%= course.ects %></td>
+    </tr>
+
+    <% }); // courses.forEach  %>
+
+
+</table>
