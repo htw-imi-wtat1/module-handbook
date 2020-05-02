@@ -9,12 +9,17 @@ const fields = ["code", "name", "ects", "mission", "examination", "objectives", 
 
 
 exports.getAllCourses = (req, res, next) => {
-    Course.find({}, (error, courses) => {
-        if (error) next(error);
-        req.data = courses;
-        res.render("courses", {courses: req.data});
-    })
-}
+    Course.find({})
+        .exec()
+        .then((courses) => {
+            res.render("courses", {courses: courses});
+        }).catch((error) => {
+        console.log(error.message);
+        return [];
+    //}).then(() => {
+     //   console.log("promise complete");
+    });
+};
 exports.getCourse = (req, res, next) => {
     //console.log(req.params);
     const courseId = req.params.id;
@@ -32,10 +37,15 @@ exports.createCourse = (req, res, next) => {
 
 exports.saveCourse = (req, res, next) => {
     let o = {};
-    fields.forEach(f => {o[f] = req.body[f];})
-    let newCourse = new Course(o);
-    newCourse.save((error, result) => {
-        if (error) res.send(error);
-        res.render("course",{notice: 'Course created',course: newCourse, fields: fields});
+    fields.forEach(f => {
+        o[f] = req.body[f];
     })
+    let newCourse = new Course(o);
+    newCourse.save()
+        .then(result =>{
+            res.render("course", {notice: 'Course created', course: newCourse, fields: fields});
+        })
+        .catch(error =>  {
+            if (error) res.send(error);
+        });
 }
