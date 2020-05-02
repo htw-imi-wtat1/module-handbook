@@ -7,7 +7,22 @@
 
 * start with
 
-    nodemon main.js
+    * production: node main.js
+    * development: nodemon main.js
+
+# Sprint 04: Deployment
+
+## Linting with eslint
+
+    npm install eslint --save-dev
+    npx eslint --init
+    
+First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
+You can find my config at .eslintrc.yml, I've tracked the questions in doc/eslint-install.md
+as they are different than the ones in the book.
+You can make other choices if you want to.
+    
+
 
 # Sprint 03
 
@@ -44,7 +59,6 @@ after starting the cli with ``mongo``
 ## Seeding the database
 
 ( in the mongo container:)
-
 
     mongoimport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses data/seed/tryout
     mongoexport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses  > data/seed/export    
