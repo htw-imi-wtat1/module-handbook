@@ -9,6 +9,9 @@ const coursesController = require('./controllers/coursesController')
 const layouts = require('express-ejs-layouts')
 const path = require('path')
 
+//const morgan = require('morgan')
+//app.use(morgan(":method :url :status * :response-time ms"))
+
 app.set('port', process.env.PORT || 3002)
 
 const mongoose = require('mongoose')

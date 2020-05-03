@@ -10,22 +10,54 @@
     * production: node main.js
     * development: nodemon main.js  
 
-# Sprint 04: Deployment
+    # Sprint 04: Deployment
 
-## Linting with eslint
+    ## Linting with eslint
 
-    npm install eslint --save-dev
-    npx eslint --init
-    
-First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
-You can find my config at .eslintrc.yml, I've tracked the questions in doc/eslint-install.md
-as they are different than the ones in the book.
-You can make other choices if you want to.
+        npm install eslint --save-dev
+        npx eslint --init
 
-https://www.jetbrains.com/help/webstorm/eslint.html#
-https://standardjs.com/
+    First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
+    You can find my config at .eslintrc.yml, I've tracked the questions in
+    doc/eslint-install.md
+    as they are different than the ones in the book.
+    You can make other choices if you want to.
 
-    
+    https://www.jetbrains.com/help/webstorm/eslint.html#
+    https://standardjs.com/
+
+
+    ## Debugger/Logger
+
+    ### Logging
+        export DEBUG=*
+        node main.js
+
+    ### oder über morgan
+
+    * installed morgan: npm install morgan
+    * use morgan in main.js:
+        const morgan = require('morgan')
+        app.use(morgan(":method :url :status * :response-time ms"))
+
+    ### Debugger
+
+        node inspect main.js
+
+        https://nodejs.org/en/docs/guides/debugging-getting-started/
+
+I use the debugger in JetBrains WebStorm. I had to create a second run configuration using plain node instead of nodemon to avoid this error:
+
+    node: [DEP0062]: `node --debug` and `node --debug-brk` are invalid. Please use `node --    inspect` and `node --inspect-brk` instead.
+
+* Debugging node in WebStorm: https://www.jetbrains.com/help/webstorm/running-and-debugging-node-js.html#
+
+
+
+
+
+
+
 
 
 # Sprint 03
