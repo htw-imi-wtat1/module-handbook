@@ -16,35 +16,45 @@
 
         npm install eslint --save-dev
         npx eslint --init
+        
+and then, for example, run:
+        npx eslint main.js
+        npx eslint coursesController.js --fix
+        
+First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
+You can find my config at .eslintrc.yml, I've tracked the questions in
+doc/eslint-install.md
+as they are different than the ones in the book.
+You can make other choices if you want to.
 
-    First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
-    You can find my config at .eslintrc.yml, I've tracked the questions in
-    doc/eslint-install.md
-    as they are different than the ones in the book.
-    You can make other choices if you want to.
+Just make sure that you use the same code formatting everywhere from now on!
+Make a habit of checking your changes before committing.
 
-    https://www.jetbrains.com/help/webstorm/eslint.html#
-    https://standardjs.com/
+Webstorm's format command doesn't pick up the eslint formatting rules, but
+it is possible to run eslint automatically on save by configuring it under 
+"Languages & Frameworks => JavaScript => Code Quality tools"
 
+* https://www.jetbrains.com/help/webstorm/eslint.html#
+* https://standardjs.com/
 
-    ## Debugger/Logger
+## Debugger/Logger
 
-    ### Logging
-        export DEBUG=*
-        node main.js
+### Logging
+    export DEBUG=*
+    node main.js
 
-    ### oder über morgan
+### oder über morgan
 
-    * installed morgan: npm install morgan
-    * use morgan in main.js:
-        const morgan = require('morgan')
-        app.use(morgan(":method :url :status * :response-time ms"))
+* installed morgan: npm install morgan
+* use morgan in main.js:
+    const morgan = require('morgan')
+    app.use(morgan(":method :url :status * :response-time ms"))
 
-    ### Debugger
+### Debugger
 
-        node inspect main.js
+    node inspect main.js
 
-        https://nodejs.org/en/docs/guides/debugging-getting-started/
+    https://nodejs.org/en/docs/guides/debugging-getting-started/
 
 I use the debugger in JetBrains WebStorm. I had to create a second run configuration using plain node instead of nodemon to avoid this error:
 
