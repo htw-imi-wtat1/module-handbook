@@ -7,7 +7,8 @@
     "run dev": "nodemon main.js",
     "mongo": "docker-compose up -d",
     "mongobash": "docker-compose exec mongo bash",
-    "test": "mocha"
+    "test": "mocha",
+    "test:watch": "mocha --watch --reporter min"
   },
   "author": "Barne Kleinen",
   "license": "MIT",

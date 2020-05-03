@@ -68,7 +68,12 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
     npm install mocha --save-dev
     npm install chai --save-dev
 
-* Documentation: https://mochajs.org/
+* Added tests as described in the chapter, except:
+* examples in book use arrow functions, the documentation advises not to: https://mochajs.org/#arrow-functions
+* Mocha: https://mochajs.org/
+* Chai: https://www.chaijs.com/
+* The examples uses the expect assertion syntax: https://www.chaijs.com/guide/styles/#expect
+* https://www.chaijs.com/api/bdd/
 
     
 

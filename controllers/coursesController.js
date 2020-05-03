@@ -35,7 +35,9 @@ exports.createCourse = (req, res, next) => {
 function getCourseParams (body) {
   const o = {}
   fields.forEach(f => {
-    o[f] = body[f]
+    if (body[f]) {
+      o[f] = body[f]
+    }
   })
   return o
 }

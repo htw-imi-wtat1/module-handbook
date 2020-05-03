@@ -257,16 +257,40 @@ const coursesIMIB = [{
   name: 'Informatik 3',
   mission: null,
   ects: 4,
-  examination: null,
-  objectives: null,
-  contents: null,
-  prerequisites: null,
-  literature: null,
+  examination: 'Semesterbegleitende Übungen 35% und Klausur (90 min, 65%)',
+  objectives: 'Die Studierenden haben gelernt, wie man ein komplexes Softwarebasiertes\n' +
+      'System analysiert, modelliert und eine Lösung entwirft.\n' +
+      '- Die Studierende können sicher mit Entwurfsmuster umgehen und\n' +
+      'sie in einer aktuellen Programmiersprache praktisch umsetzen.\n' +
+      '- Die Studierenden haben Modellierungs-Notationen wie UML sicher\n' +
+      'anzuwenden gelernt.\n' +
+      '- Sie haben verstanden, wie sie die Methoden des Software-\n' +
+      'Engineerings auf der Entwicklung von Mediensysteme anwenden\n' +
+      'können.\n' +
+      '- Sie können Algorithmen der Lokalisierung und Internationalisierung\n' +
+      'von Software umsetzen.',
+  contents: '- Software-Entwicklungs-Lebenszyklen, vor allem Agile Entwicklung\n' +
+      '- Object-Oriented Modellierung mit UML (Use Cases, Use Case Diagram, Class Diagrams, State Diagrams, Sequence\n' +
+      'Diagrams)\n' +
+      '- Anforderungsanalyse\n' +
+      '- Entwurfsmuster (Design Patterns)\n' +
+      '- Implementierung von Design Pattern\n' +
+      '- Testverfahren\n' +
+      '- Software-Architekturen\n' +
+      '- Internationalisierung und Lokalisierung von Software Systemen',
+  prerequisites: 'B1, B7',
+  literature: 'There are a number of books that can be useful for this course. The first one is the book I will be using as a basis for much of the course material.\n' +
+      '\n' +
+      'Ian Sommerville (2015). Software Engineering, English edition, [10th edition]. Prentice Hall. Ian has now made a number of videos on various topics from the book or on supplementary topics. Have a look around at http://iansommerville.com/software-engineering-book/videos/software-engineering/\n' +
+      'Robert C. Martin (2008). Clean Code. Prentice Hall.\n' +
+      'Andrew Hunt & David Thomas (1999). The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley.\n' +
+      'Hal Fulton, Russel A. Olsen & André Arko (2015). The Ruby Way. [3rd edition]. Addison-Wesley\n' +
+      'Sandi Metz (2012). Practical Object Oriented Design in Ruby: An Agile Primer.',
   methods: 'P SL/Ü',
-  skills_knowledge_understanding: null,
-  skills_intellectual: null,
-  skills_practical: null,
-  skills_general: null
+  skills_knowledge_understanding: '',
+  skills_intellectual: '',
+  skills_practical: '',
+  skills_general: ''
 },
 {
   semester: 3,
@@ -632,8 +656,8 @@ const coursesIMIB = [{
   semester: 0,
   required: 'elective',
   code: 'WTAT1',
-  name: 'Web Technology  –  Aktuelle Themen 1',
-  mission: null,
+  name: 'Web Technology – Aktuelle Themen 1',
+  mission: 'Kenntnisse entsprechend dem ausgewählten Fach aus aktuellen Themen des Felds Web Technology',
   ects: 5,
   examination: null,
   objectives: null,
