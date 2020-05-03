@@ -82,12 +82,9 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
 * Chai: https://www.chaijs.com/
 * The examples uses the expect assertion syntax: https://www.chaijs.com/guide/styles/#expect
 * https://www.chaijs.com/api/bdd/
+* https://github.com/chaijs/chai-http
 
     
-
-
-
-
 
 
 # Sprint 03
