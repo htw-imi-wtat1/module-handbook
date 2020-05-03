@@ -1,5 +1,7 @@
+
 const chai = require('chai')
 const { expect } = chai
+
 const coursesController = require('../controllers/coursesController')
 
 describe('coursesController', function () {

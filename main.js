@@ -12,14 +12,13 @@ const path = require('path')
 // const morgan = require('morgan')
 // app.use(morgan(":method :url :status * :response-time ms"))
 
-app.set('port', process.env.PORT || 3002)
+const mongodbURI = process.env.MONGODB_URI || ((process.env.NODE_ENV === 'test') ? 'mongodb://localhost:27017/modulehandbook_test_db' : 'mongodb://localhost:27017/modulehandbook_db')
+const port = process.env.PORT || ((process.env.NODE_ENV === 'test') ? 30020 : 3002)
+
+app.set('port', port)
 
 const mongoose = require('mongoose')
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/modulehandbook_db',
-  { useNewUrlParser: true, useUnifiedTopology: true }
-)
-// const Course = require('./models/course')
+mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
@@ -73,3 +72,4 @@ app.use(errorController.internalServerError)
 app.listen(app.get('port'), () => {
   console.log(`Server running at http://localhost:${app.get('port')}`)
 })
+module.exports = app

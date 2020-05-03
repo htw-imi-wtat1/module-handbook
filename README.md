@@ -67,9 +67,17 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
 
     npm install mocha --save-dev
     npm install chai --save-dev
+    npm i chai-http --save-dev
 
 * Added tests as described in the chapter, except:
-* examples in book use arrow functions, the documentation advises not to: https://mochajs.org/#arrow-functions
+    * examples in book use arrow functions, the documentation advises not to: https://mochajs.org/#arrow-functions
+    * more concise switching of environment specific configuration
+    * we don't have user crud yet, but the test examples were easily transferable to course
+    * created test for saving new courses in test/coursesControllerSaveSpec.js
+    * (chose this structure to keep the examples simple)
+    * I had to add `env: mocha: true` to .eslintrcyml to have eslint recognise describe and it
+          
+          
 * Mocha: https://mochajs.org/
 * Chai: https://www.chaijs.com/
 * The examples uses the expect assertion syntax: https://www.chaijs.com/guide/styles/#expect
