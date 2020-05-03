@@ -14,7 +14,7 @@ exports.getAllCourses = (req, res, next) => {
     }).catch((error) => {
       console.log(error.message)
       return []
-    // }).then(() => {
+      // }).then(() => {
       //   console.log("promise complete");
     })
 }
@@ -32,12 +32,18 @@ exports.createCourse = (req, res, next) => {
   res.render('createCourse', { fields: fields })
 }
 
-exports.saveCourse = (req, res, next) => {
+function getCourseParams (body) {
   const o = {}
   fields.forEach(f => {
-    o[f] = req.body[f]
+    o[f] = body[f]
   })
-  const newCourse = new Course(o)
+  return o
+}
+
+module.exports.getCourseParams = getCourseParams
+
+exports.saveCourse = (req, res, next) => {
+  const newCourse = new Course(getCourseParams(req.body))
   newCourse.save()
     .then(result => {
       res.render('course', { notice: 'Course created', course: newCourse, fields: fields })

@@ -53,7 +53,14 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
 * Debugging node in WebStorm: https://www.jetbrains.com/help/webstorm/running-and-debugging-node-js.html#
 
 
+## Testing with Mocha
 
+    npm install mocha --save-dev
+    npm install chai --save-dev
+
+* Documentation: https://mochajs.org/
+
+    
 
 
 
