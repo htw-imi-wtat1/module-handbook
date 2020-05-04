@@ -1,30 +1,22 @@
-process.env.NODE_ENV = 'test'
-const chai = require('chai')
-const chaiHTTP = require('chai-http')
-chai.use(chaiHTTP)
-const { expect } = chai
-const app = require('../app')
-const Course = require('../models/course')
+const { chai, expect, app, Course } = require('./common')
+
 const courseData = require('../mongo/seed/imi-b-courses')
 const threeCourses = [courseData[3], courseData[15], courseData[23]]
 
-beforeEach(function (done) {
-  Course.deleteMany({})
-    .then(() => {
-      console.log('all courses deleted')
-    })
-    .then(() => {
-      return Course.create(threeCourses)
-      // to see tests fail, use this:
-      // return Course.create([{code: "dummy"}])
-    })
-    .catch(error => done(error.message))
-    .then(createdCourses => {
-      console.log(createdCourses.length + ' courses created')
-      done()
-    })
-})
 describe('coursesController', function () {
+  beforeEach(function (done) {
+    Course.create(threeCourses)
+    // to see tests fail, use this:
+    // return Course.create([{code: "dummy"}])
+      .then(createdCourses => {
+        // console.log(createdCourses.length + ' courses created')
+        done()
+      })
+      .catch(error => {
+        console.log('error caught: ' + error.message)
+        done(error.message)
+      })
+  })
   describe('course list', function () {
     it('show ok on /courses', function (done) {
       chai.request(app)

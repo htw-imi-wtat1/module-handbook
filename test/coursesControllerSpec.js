@@ -1,7 +1,4 @@
-
-const chai = require('chai')
-const { expect } = chai
-
+const { expect } = require('./common')
 const coursesController = require('../controllers/coursesController')
 
 describe('coursesController', function () {

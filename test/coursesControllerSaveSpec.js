@@ -1,8 +1,5 @@
-process.env.NODE_ENV = 'test'
-const chai = require('chai')
-const { expect } = chai
-require('../main')
-const Course = require('../models/course')
+const { expect, Course } = require('./common')
+
 const testCourseData = {
   code: 'B16',
   name: '2. Fremdsprache',
@@ -19,12 +16,6 @@ const testCourseData = {
   skills_practical: 'skills 3',
   skills_general: 'skills 4'
 }
-beforeEach(function (done) {
-  Course.deleteMany({})
-    .then(() => {
-      done()
-    })
-})
 describe('coursesController', function () {
   describe('SAVE course', function () {
     it('should save the posted course', function (done) {
@@ -34,8 +25,7 @@ describe('coursesController', function () {
           Course.find({})
             .then(result => {
               expect(result.length).to.eq(1)
-                .expect(result[0])
-                .to.have.property('_id')
+              expect(result[0]).to.have.property('_id')
               done()
             })
         })
