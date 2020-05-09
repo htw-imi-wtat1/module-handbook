@@ -8,6 +8,7 @@ const errorController = require('./controllers/errorController')
 const coursesController = require('./controllers/coursesController')
 const layouts = require('express-ejs-layouts')
 const path = require('path')
+const methodOverride = require('method-override')
 
 // const morgan = require('morgan')
 // app.use(morgan(":method :url :status * :response-time ms"))
@@ -37,6 +38,7 @@ const menuItems = [
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
+  { path: '/users', text: 'Users' },
   { path: '/about', text: 'About' }
 ]
 app.use(function (req, res, next) {
@@ -47,15 +49,32 @@ app.use(function (req, res, next) {
   }
   next()
 })
+
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET']
+  })
+)
+
 app.get('/modules/:format?', homeController.showStudentView)
 app.get('/about/', homeController.showAbout)
 app.post('/about', searchController.search)
-app.get('/', homeController.showIndex)
 
 app.get('/courses', coursesController.getAllCourses)
 app.get('/courses/create', coursesController.createCourse)
 app.post('/courses', coursesController.saveCourse)
 app.get('/courses/:id', coursesController.getCourse)
+
+const User = require('./models/user')
+const usersController = require('./controllers/usersController')
+app.get('/users', usersController.index, usersController.indexView)
+app.get('/users/new', usersController.new)
+app.post('/users/create', usersController.create, usersController.redirectView)
+app.get('/users/:id/edit', usersController.edit)
+app.put('/users/:id/update', usersController.update, usersController.redirectView)
+app.get('/users/:id', usersController.show, usersController.showView)
+app.delete('/users/:id/delete', usersController.delete, usersController.redirectView)
+app.get('/', homeController.showIndex)
 
 app.use(errorController.pageNotFoundError)
 app.use(errorController.internalServerError)
