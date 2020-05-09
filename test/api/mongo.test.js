@@ -5,6 +5,7 @@ describe('insert', () => {
   let db
 
   beforeAll(async () => {
+    console.log(process.env.MONGO_URL)
     connection = await MongoClient.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true

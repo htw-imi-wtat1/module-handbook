@@ -12,18 +12,9 @@ const path = require('path')
 // const morgan = require('morgan')
 // app.use(morgan(":method :url :status * :response-time ms"))
 
-const mongodbURI = process.env.MONGODB_URI || ((process.env.NODE_ENV === 'test') ? 'mongodb://localhost:27017/modulehandbook_test_db' : 'mongodb://localhost:27017/modulehandbook_db')
 const port = process.env.PORT || ((process.env.NODE_ENV === 'test') ? 30020 : 3002)
 
 app.set('port', port)
-
-const mongoose = require('mongoose')
-mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => {
-  console.log('Successfully connected to MongoDB using Mongoose!')
-})
 
 app.set('view engine', 'ejs')
 app.use(layouts)
