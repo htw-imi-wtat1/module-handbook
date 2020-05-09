@@ -4,6 +4,7 @@
 
 * for [WTAT1 SoSe 20](https://bkleinen.github.io/classes/ss2020/wtat1/topics/topic-04-first-express-app/)
 * see backlog below
+* App on Heroku: https://wtat1-module-handbook.herokuapp.com/
 
 ## Usage
 
