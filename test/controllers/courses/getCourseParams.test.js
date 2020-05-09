@@ -1,4 +1,3 @@
-const { app, Course, request } = require('../../commonJest')
 const coursesController = require('../../../controllers/coursesController')
 
 describe('coursesController', function () {

@@ -1,10 +1,22 @@
 process.env.NODE_ENV = 'test'
 const Course = require('../models/course')
+const request = require('supertest')
 module.exports = {
   app: require('../app'),
-  Course: Course
+  Course: Course,
+  request: request
 }
-module.exports.request = require('supertest')
+
+const mongoose = require('mongoose')
+console.log(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection
+
+afterAll(async () => {
+  console.log(typeof (db))
+  await db.close()
+})
+
 beforeEach(function (done) {
   // console.log('global beforeEach')
   Course.deleteMany({})

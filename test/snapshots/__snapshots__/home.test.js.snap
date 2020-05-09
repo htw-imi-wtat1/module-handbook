@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders home correctly 1`] = `
+"<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=\\"utf-8\\">
+	<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=0.8, maximum-scale=1\\">
+	<title>Module Handbook</title>
+	<link rel=\\"shortcut icon\\" type=\\"image/png\\" href=\\"/images/icon.png\\" />
+	<link rel=\\"stylesheet\\" href=\\"/css/bootstrap.css\\">
+	<link rel=\\"stylesheet\\" href=\\"/css/module_handbook.css\\">
+	<script src=\\"/jquery.min.js\\"></script>
+	<!--<script src=\\"/popper.js\\"></script>-->
+	<script src=\\"/js/bootstrap.min.js\\"></script>
+
+</head>
+
+<body>
+	<div id=\\"nav\\">
+		<div class=\\"col-sm nav-align\\">
+			<h1 id=\\"title\\">Module Handbook</h1>
+		</div>
+		<nav class=\\"navbar navbar-expand-lg navbar-light bg-light\\">
+    <a class=\\"navbar-brand\\" href=\\"/\\">Home</a>
+    <button class=\\"navbar-toggler\\" type=\\"button\\" data-toggle=\\"collapse\\" data-target=\\"#navbarSupportedContent\\"
+            aria-controls=\\"navbarSupportedContent\\" aria-expanded=\\"false\\" aria-label=\\"Toggle navigation\\">
+        <span class=\\"navbar-toggler-icon\\"></span>
+    </button>
+
+    <div class=\\"collapse navbar-collapse\\" id=\\"navbarSupportedContent\\">
+        <ul class=\\"navbar-nav mr-auto\\">
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/modules/tabular\\">Module Table
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/courses\\">Courses
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/about\\">About
+        
+    </a>
+</li>
+
+            
+
+        </ul>
+        <form class=\\"form-inline my-2 my-lg-0\\" action = \\"/about\\" method = \\"POST\\">
+            <input class=\\"form-control mr-sm-2\\" type=\\"text\\" placeholder=\\"Search\\" aria-label=\\"Search\\" name = \\"query\\">
+            <button class=\\"btn btn-outline-success my-2 my-sm-0\\" type=\\"submit\\">Search</button>
+        </form>
+    </div>
+</nav>
+/
+
+	</div>
+
+	<html>
+  <head>
+    <link rel=\\"stylesheet\\" href=\\"/bootstrap.css\\" />
+  </head>
+  <body>
+    <h1>Modul&uuml;bersicht Internationale Medieninformatik</h1>
+    <img src = \\"images/imi-b-basisjahr.png\\" />
+    <img src = \\"images/imi-b-vertiefungsjahr.png\\" />
+    <img src = \\"images/imi-b-spezialisierungsjahr.png\\" />
+  </body>
+</html>
+
+
+</body>
+
+</html>
+"
+`;
