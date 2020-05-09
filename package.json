@@ -14,7 +14,7 @@
   "author": "Barne Kleinen",
   "jest": {
     "verbose": true,
-    "testEnvironment": "node"
+    "preset": "@shelf/jest-mongodb"
   },
   "license": "MIT",
   "dependencies": {
@@ -29,6 +29,7 @@
     "react": "^16.13.1"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "chai-http": "^4.3.0",
