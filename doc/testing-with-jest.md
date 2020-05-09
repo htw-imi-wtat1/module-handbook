@@ -60,7 +60,7 @@ Steps taken (also refer to the commits:)
 
 ## Documentation
 * https://jestjs.io/docs/en/mongodb
-* Mongo Memory Server: shttps://github.com/nodkz/mongodb-memory-server
+* Mongo Memory Server: https://github.com/nodkz/mongodb-memory-server
 
 # Snapshot Testing
 

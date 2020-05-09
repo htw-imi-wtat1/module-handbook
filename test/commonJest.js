@@ -8,12 +8,10 @@ module.exports = {
 }
 
 const mongoose = require('mongoose')
-console.log(process.env.MONGO_URL)
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 afterAll(async () => {
-  console.log(typeof (db))
   await db.close()
 })
 

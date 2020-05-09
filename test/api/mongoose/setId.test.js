@@ -7,16 +7,12 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 
 describe('[mongoose] ', () => {
-  let connection
-
   beforeAll(async () => {
-    console.log(process.env.MONGO_URL)
-    connection = mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    // const db = await mongoose.connection
+    mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 
   afterAll(async () => {
-    await connection.close()
+    await mongoose.connection.close()
   })
 
   describe('id in tests:', () => {
