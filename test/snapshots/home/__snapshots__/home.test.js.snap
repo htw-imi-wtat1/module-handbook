@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Courses Index renders course index correctly 1`] = `
+exports[`renders home correctly 1`] = `
 "<!DOCTYPE html>
 <html>
 
@@ -46,9 +46,16 @@ exports[`Courses Index renders course index correctly 1`] = `
 </li>
 
             
-                <li class=\\"nav-item active\\">
+                <li class=\\"nav-item \\">
     <a class=\\"nav-link\\" href=\\"/courses\\">Courses
-        <span class=\\"sr-only\\">(current)</span>
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/users\\">Users
+        
     </a>
 </li>
 
@@ -68,54 +75,21 @@ exports[`Courses Index renders course index correctly 1`] = `
         </form>
     </div>
 </nav>
-/courses
+/
 
 	</div>
 
-	<h1>Courses</h1>
-<h2><a href=\\"courses/create\\">Create new Course</a></h2>
-<table class=\\"table\\" id = \\"course_overview\\">
-    <tr>
-        <th>S.</th>
-        <th>Code</th>
-        <th>Modulbezeichnung</th>
-        <th>Art</th>
-        <th>Form</th>
-        <th>LP</th>
-    </tr>
-
-    
-    <tr onclick = \\"location.href='courses/42345f5f5f5f5f5f5f5f5f5f'\\">
-        <td></td>
-        <td>B4</td>
-        <td>Mathematik  für Medieninformatik 1</td>
-        <td></td>
-        <td>P SL/Ü</td>
-        <td>2</td>
-    </tr>
-
-    
-    <tr onclick = \\"location.href='courses/4231365f5f5f5f5f5f5f5f5f'\\">
-        <td></td>
-        <td>B16</td>
-        <td>2. Fremdsprache</td>
-        <td></td>
-        <td>WP Ü</td>
-        <td>4</td>
-    </tr>
-
-    
-    <tr onclick = \\"location.href='courses/4232325f5f5f5f5f5f5f5f5f'\\">
-        <td></td>
-        <td>B22</td>
-        <td>Wahlpflichtmodul 2</td>
-        <td></td>
-        <td>WP SL/Ü</td>
-        <td>2</td>
-    </tr>
-
-    
-</table>
+	<html>
+  <head>
+    <link rel=\\"stylesheet\\" href=\\"/bootstrap.css\\" />
+  </head>
+  <body>
+    <h1>Modul&uuml;bersicht Internationale Medieninformatik</h1>
+    <img src = \\"images/imi-b-basisjahr.png\\" />
+    <img src = \\"images/imi-b-vertiefungsjahr.png\\" />
+    <img src = \\"images/imi-b-spezialisierungsjahr.png\\" />
+  </body>
+</html>
 
 
 </body>

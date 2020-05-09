@@ -8,6 +8,7 @@ const fields = ['code', 'name', 'ects', 'mission', 'examination', 'objectives', 
 
 exports.getAllCourses = (req, res, next) => {
   Course.find({})
+    .sort('code')
     .exec()
     .then((courses) => {
       res.render('courses', { courses: courses })

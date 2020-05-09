@@ -1,4 +1,4 @@
-const { app, request } = require('../commonJest')
+const { app, request } = require('../../commonJest')
 
 it('renders home correctly', (done) => {
   request(app)

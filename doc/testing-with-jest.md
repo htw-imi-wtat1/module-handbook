@@ -53,7 +53,7 @@ Steps taken (also refer to the commits:)
 * npm install @shelf/jest-mongodb --save-dev
 * adapted jest configuration in package.json
 * added test/jest-mongodb-config.js
-* created test/api/mongo.test.js
+* created test-extras/tryouts/mongo.test.js
 * moved db connection from app.js to main.js - the tests only require app.js
 * created a proper db setup in test/commonJest.js
 
@@ -73,7 +73,7 @@ but it is actually quite usefull to get off the ground testing with jest easily.
 For the snapshots to work, I needed to use a fixed object id in testing, which works only with the in-memory db solution described above.
 I've used an api test to figure out mongoose behaviour: test/api/mongoose/setId.test.js
 
-See test/snapshots/ for examples, especially test/snapshots/courses/index.test.js for an example fixing the object ids in mongo.
+See test/snapshots/ for examples, especially test/snapshots/courses/userIndex.test.js for an example fixing the object ids in mongo.
 
 
 * https://jestjs.io/docs/en/snapshot-testing

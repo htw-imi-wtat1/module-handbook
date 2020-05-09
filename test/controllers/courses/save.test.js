@@ -1,7 +1,7 @@
-const { Course, request } = require('../../commonJest')
+const { Course } = require('../../commonJest')
 
 const testCourseData = {
-  code: 'B16',
+  code: 'SAVE_Test_Course',
   name: '2. Fremdsprache',
   mission: 'learn language',
   ects: 4,
@@ -22,7 +22,7 @@ describe('coursesController', function () {
       const testCourse = new Course(testCourseData)
       testCourse.save()
         .then(() => {
-          Course.find({})
+          Course.find({ code: testCourseData.code })
             .then(result => {
               expect(result.length).toBe(1)
               expect(result[0]).toHaveProperty('_id')

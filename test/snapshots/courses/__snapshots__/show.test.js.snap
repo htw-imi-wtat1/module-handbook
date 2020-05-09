@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders home correctly 1`] = `
+exports[`Course Show renders course show correctly 1`] = `
 "<!DOCTYPE html>
 <html>
 
@@ -54,6 +54,13 @@ exports[`renders home correctly 1`] = `
 
             
                 <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/users\\">Users
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
     <a class=\\"nav-link\\" href=\\"/about\\">About
         
     </a>
@@ -68,22 +75,44 @@ exports[`renders home correctly 1`] = `
         </form>
     </div>
 </nav>
-/
+/courses/<replaced_mongoose_id>
 
 	</div>
 
-	<html>
-  <head>
-    <link rel=\\"stylesheet\\" href=\\"/bootstrap.css\\" />
-  </head>
-  <body>
-    <h1>Modul&uuml;bersicht Internationale Medieninformatik</h1>
-    <img src = \\"images/imi-b-basisjahr.png\\" />
-    <img src = \\"images/imi-b-vertiefungsjahr.png\\" />
-    <img src = \\"images/imi-b-spezialisierungsjahr.png\\" />
-  </body>
-</html>
-
+	<p>Course.</p>
+<p>[&#34;code&#34;,&#34;name&#34;,&#34;ects&#34;,&#34;mission&#34;,&#34;examination&#34;,&#34;objectives&#34;,&#34;contents&#34;,&#34;prerequisites&#34;,&#34;literature&#34;,&#34;methods&#34;,&#34;skills_knowledge_understanding&#34;,&#34;skills_intellectual&#34;,&#34;skills_practical&#34;,&#34;skills_general&#34;]</p>
+<p></p>
+<table>
+    
+    <tr><td>code</td><td>B13_index_snapshot</td></tr>
+    
+    <tr><td>name</td><td>Bildverarbeitung</td></tr>
+    
+    <tr><td>ects</td><td>2</td></tr>
+    
+    <tr><td>mission</td><td>work on pictures</td></tr>
+    
+    <tr><td>examination</td><td>exam</td></tr>
+    
+    <tr><td>objectives</td><td>learn to transform pictures</td></tr>
+    
+    <tr><td>contents</td><td>loops over pixels</td></tr>
+    
+    <tr><td>prerequisites</td><td>info2</td></tr>
+    
+    <tr><td>literature</td><td>some books</td></tr>
+    
+    <tr><td>methods</td><td>P SL/Ü</td></tr>
+    
+    <tr><td>skills_knowledge_understanding</td><td>a</td></tr>
+    
+    <tr><td>skills_intellectual</td><td>b</td></tr>
+    
+    <tr><td>skills_practical</td><td>c</td></tr>
+    
+    <tr><td>skills_general</td><td>d</td></tr>
+    
+</table>
 
 </body>
 

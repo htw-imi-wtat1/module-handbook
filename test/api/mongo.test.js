@@ -1,29 +1,14 @@
-const { MongoClient } = require('mongodb')
-
+const { db } = require('../commonJest')
 describe('insert', () => {
-  let connection
-  let db
-
-  beforeAll(async () => {
-    console.log(process.env.MONGO_URL)
-    connection = await MongoClient.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    db = await connection.db()
-  })
-
-  afterAll(async () => {
-    await connection.close()
-  })
-
-  it('should insert a doc into collection', async () => {
-    const users = db.collection('users')
-
-    const mockUser = { _id: 'some-user-id', name: 'John' }
+  it('should insert a doc into collection', async done => {
+    const users = db.collection('adhocusers')
+    const id = 'some-user-id' + Math.ceil((Math.random() * 10000))
+    console.log('key: ' + id)
+    const mockUser = { _id: id, name: 'John' }
     await users.insertOne(mockUser)
 
-    const insertedUser = await users.findOne({ _id: 'some-user-id' })
+    const insertedUser = await users.findOne({ _id: id })
     expect(insertedUser).toEqual(mockUser)
+    done()
   })
 })
