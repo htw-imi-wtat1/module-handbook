@@ -2,7 +2,7 @@ const coursesIMIB = [{
   semester: 1,
   required: 'required',
   code: 'B1',
-  name: 'Informatik  1',
+  name: 'Informatik 1',
   mission: null,
   ects: 4,
   examination: null,
