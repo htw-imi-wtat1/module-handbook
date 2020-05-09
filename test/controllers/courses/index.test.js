@@ -1,6 +1,6 @@
-const { chai, expect, app, Course } = require('./common')
+const { app, Course, request } = require('../../commonJest')
 
-const courseData = require('../mongo/seed/imi-b-courses')
+const courseData = require('../../../mongo/seed/imi-b-courses')
 const threeCourses = [courseData[3], courseData[15], courseData[23]]
 
 describe('coursesController', function () {
@@ -19,22 +19,21 @@ describe('coursesController', function () {
   })
   describe('course list', function () {
     it('show ok on /courses', function (done) {
-      chai.request(app)
+      request(app)
         .get('/courses')
-        .end((errors, res) => {
-          expect(res).to.have.status(200)
-          expect(errors).to.be.equal(null)
+        .then((res) => {
+          expect(res.statusCode).toBe(200)
           done()
         })
     })
     it('show all courses in db', function (done) {
-      chai.request(app)
+      request(app)
         .get('/courses')
-        .end((errors, res) => {
+        .then((res) => {
           const body = res.text
           for (const course of threeCourses) {
-            expect(body).to.include(course.code)
-            expect(body).to.include(course.name)
+            expect(body).toContain(course.code)
+            expect(body).toContain(course.name)
           }
           done()
         })

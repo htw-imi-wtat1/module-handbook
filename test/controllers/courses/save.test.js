@@ -1,4 +1,4 @@
-const { expect, Course } = require('./common')
+const { Course, request } = require('../../commonJest')
 
 const testCourseData = {
   code: 'B16',
@@ -24,8 +24,8 @@ describe('coursesController', function () {
         .then(() => {
           Course.find({})
             .then(result => {
-              expect(result.length).to.eq(1)
-              expect(result[0]).to.have.property('_id')
+              expect(result.length).toBe(1)
+              expect(result[0]).toHaveProperty('_id')
               done()
             })
         })

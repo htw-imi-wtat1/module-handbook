@@ -1,13 +1,22 @@
 process.env.NODE_ENV = 'test'
-const chai = require('chai')
-chai.use(require('chai-http'))
 const Course = require('../models/course')
+const request = require('supertest')
 module.exports = {
-  chai: chai,
-  expect: chai.expect,
   app: require('../app'),
-  Course: Course
+  Course: Course,
+  request: request
 }
+
+const mongoose = require('mongoose')
+console.log(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection
+
+afterAll(async () => {
+  console.log(typeof (db))
+  await db.close()
+})
+
 beforeEach(function (done) {
   // console.log('global beforeEach')
   Course.deleteMany({})

@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Courses Index renders course index correctly 1`] = `
+"<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=\\"utf-8\\">
+	<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=0.8, maximum-scale=1\\">
+	<title>Module Handbook</title>
+	<link rel=\\"shortcut icon\\" type=\\"image/png\\" href=\\"/images/icon.png\\" />
+	<link rel=\\"stylesheet\\" href=\\"/css/bootstrap.css\\">
+	<link rel=\\"stylesheet\\" href=\\"/css/module_handbook.css\\">
+	<script src=\\"/jquery.min.js\\"></script>
+	<!--<script src=\\"/popper.js\\"></script>-->
+	<script src=\\"/js/bootstrap.min.js\\"></script>
+
+</head>
+
+<body>
+	<div id=\\"nav\\">
+		<div class=\\"col-sm nav-align\\">
+			<h1 id=\\"title\\">Module Handbook</h1>
+		</div>
+		<nav class=\\"navbar navbar-expand-lg navbar-light bg-light\\">
+    <a class=\\"navbar-brand\\" href=\\"/\\">Home</a>
+    <button class=\\"navbar-toggler\\" type=\\"button\\" data-toggle=\\"collapse\\" data-target=\\"#navbarSupportedContent\\"
+            aria-controls=\\"navbarSupportedContent\\" aria-expanded=\\"false\\" aria-label=\\"Toggle navigation\\">
+        <span class=\\"navbar-toggler-icon\\"></span>
+    </button>
+
+    <div class=\\"collapse navbar-collapse\\" id=\\"navbarSupportedContent\\">
+        <ul class=\\"navbar-nav mr-auto\\">
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/modules/tabular\\">Module Table
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item active\\">
+    <a class=\\"nav-link\\" href=\\"/courses\\">Courses
+        <span class=\\"sr-only\\">(current)</span>
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/about\\">About
+        
+    </a>
+</li>
+
+            
+
+        </ul>
+        <form class=\\"form-inline my-2 my-lg-0\\" action = \\"/about\\" method = \\"POST\\">
+            <input class=\\"form-control mr-sm-2\\" type=\\"text\\" placeholder=\\"Search\\" aria-label=\\"Search\\" name = \\"query\\">
+            <button class=\\"btn btn-outline-success my-2 my-sm-0\\" type=\\"submit\\">Search</button>
+        </form>
+    </div>
+</nav>
+/courses
+
+	</div>
+
+	<h1>Courses</h1>
+<h2><a href=\\"courses/create\\">Create new Course</a></h2>
+<table class=\\"table\\" id = \\"course_overview\\">
+    <tr>
+        <th>S.</th>
+        <th>Code</th>
+        <th>Modulbezeichnung</th>
+        <th>Art</th>
+        <th>Form</th>
+        <th>LP</th>
+    </tr>
+
+    
+    <tr onclick = \\"location.href='courses/42345f5f5f5f5f5f5f5f5f5f'\\">
+        <td></td>
+        <td>B4</td>
+        <td>Mathematik  für Medieninformatik 1</td>
+        <td></td>
+        <td>P SL/Ü</td>
+        <td>2</td>
+    </tr>
+
+    
+    <tr onclick = \\"location.href='courses/4231365f5f5f5f5f5f5f5f5f'\\">
+        <td></td>
+        <td>B16</td>
+        <td>2. Fremdsprache</td>
+        <td></td>
+        <td>WP Ü</td>
+        <td>4</td>
+    </tr>
+
+    
+    <tr onclick = \\"location.href='courses/4232325f5f5f5f5f5f5f5f5f'\\">
+        <td></td>
+        <td>B22</td>
+        <td>Wahlpflichtmodul 2</td>
+        <td></td>
+        <td>WP SL/Ü</td>
+        <td>2</td>
+    </tr>
+
+    
+</table>
+
+
+</body>
+
+</html>
+"
+`;
