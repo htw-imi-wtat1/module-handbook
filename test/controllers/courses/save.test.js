@@ -1,4 +1,4 @@
-const { Course, request } = require('../../commonJest')
+const { Course } = require('../../commonJest')
 
 const testCourseData = {
   code: 'B16',

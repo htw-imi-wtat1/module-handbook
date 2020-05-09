@@ -1,17 +1,20 @@
-const { app, request } = require('../../commonJest')
-const Course = require('../../../models/course')
-const courseData = require('../../../mongo/seed/imi-b-courses')
-const threeCourses = [courseData[3], courseData[15], courseData[23]]
+const { app, User, request } = require('../../commonJest')
+const userData = require('../../../mongo/seed/users')
 const ObjectID = require('mongodb').ObjectID
-
-describe('Courses Index', function () {
+function to12 (s) {
+  if (s.length > 12) {
+    return s.substr(0, 12)
+  }
+  return s + '_'.repeat(12 - s.length)
+}
+describe('User Index', function () {
   beforeEach(function (done) {
-    const dataFixedIDs = threeCourses.map(c => {
-      c._id = new ObjectID(c.code + '_'.repeat(12 - c.code.length))
-      return c
+    const dataFixedIDs = userData.map(u => {
+      u._id = new ObjectID(to12(u.email))
+      return u
     })
 
-    Course.create(dataFixedIDs)
+    User.create(dataFixedIDs)
     // to see tests fail, use this:
     // return Course.create([{ code: 'dummy' }])
       .then(createdCourses => {
@@ -23,9 +26,9 @@ describe('Courses Index', function () {
         done(error.message)
       })
   })
-  it('renders course index correctly', (done) => {
+  it('renders user index correctly', (done) => {
     request(app)
-      .get('/courses')
+      .get('/users')
       .then((response) => {
         expect(response.text).toMatchSnapshot()
         done()

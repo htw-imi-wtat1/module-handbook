@@ -1,4 +1,4 @@
-# Example for Getting Programming with Node Sprints 02 - 04
+# Example for Getting Programming with Node Sprints 02 - 05
 
 ![Node.js CI](https://github.com/htw-imi-wtat1/module-handbook/workflows/Node.js%20CI/badge.svg)
 
