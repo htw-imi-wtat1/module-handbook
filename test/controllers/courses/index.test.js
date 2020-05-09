@@ -1,5 +1,4 @@
-const { app, Course } = require('../../commonJest')
-const request = require('supertest')
+const { app, Course, request } = require('../../commonJest')
 
 const courseData = require('../../../mongo/seed/imi-b-courses')
 const threeCourses = [courseData[3], courseData[15], courseData[23]]

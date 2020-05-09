@@ -4,6 +4,7 @@ module.exports = {
   app: require('../app'),
   Course: Course
 }
+module.exports.request = require('supertest')
 beforeEach(function (done) {
   // console.log('global beforeEach')
   Course.deleteMany({})

@@ -1,5 +1,5 @@
-const { expect } = require('./common')
-const coursesController = require('../controllers/coursesController')
+const { app, Course, request } = require('../../commonJest')
+const coursesController = require('../../../controllers/coursesController')
 
 describe('coursesController', function () {
   describe('getCourseParams', function () {
@@ -21,11 +21,11 @@ describe('coursesController', function () {
         skills_general: 'skills 4'
       }
       const body = { ...{ a: 'b', c: 'd', ...expected } } // in this simple example without nesting, its mostly the same.
-      expect(coursesController.getCourseParams(body)).to.deep.equal(expected)
+      expect(coursesController.getCourseParams(body)).toStrictEqual(expected)
     })
     it('should return an empty object with empty request', function () {
       const emptyBody = {}
-      expect(coursesController.getCourseParams(emptyBody)).to.deep.equal({})
+      expect(coursesController.getCourseParams(emptyBody)).toStrictEqual({})
     })
   })
 })
