@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongo:
-    image: library/mongo:4.2.6
+    image: library/mongo:4.2-bionic
     container_name: 'modulehandbook-mongo'
     environment:
       - MONGO_INITDB_DATABASE=
