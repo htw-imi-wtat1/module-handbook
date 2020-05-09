@@ -1,3 +1,4 @@
+<pre>
 no changes added to commit (use "git add" and/or "git commit -a")
 ~/mine/current/htw/courses/ss2020/wtat1/code/module-handbook (master)$ npx eslint --init
 ? How would you like to use ESLint? To check syntax, find problems, and enforce code style
@@ -17,8 +18,8 @@ Error: SyntaxError: Unexpected token } in JSON at position 792
     at /Users/kleinen/mine/current/htw/courses/ss2020/wtat1/code/module-handbook/node_modules/eslint/lib/init/config-initializer.js:605:29
     at processTicksAndRejections (internal/process/task_queues.js:97:5)
 ~/
-
-
+</pre>
+<pre></pre>
 ~/mine/current/htw/courses/ss2020/wtat1/code/module-handbook (master)$ npx eslint --init
 ? How would you like to use ESLint? To check syntax, find problems, and enforce code style
 ? What type of modules does your project use? JavaScript modules (import/export)

@@ -1,4 +1,4 @@
-# Deployment to Heroku from a GitHub Workflow
+# CI/CD to Heroku from a GitHub Workflow
 
 * setup ci workflow in github actions on github page
 * if in-memory db is used for tests, this should run out of the box

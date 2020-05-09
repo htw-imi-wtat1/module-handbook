@@ -13,14 +13,16 @@
     * production: node main.js
     * development: nodemon main.js  
 
-    # Sprint 04: Deployment
+# Sprint 04: Deployment
 
-    ## Linting with eslint
+## Preparation: Linting, Debugging und Logging
+### Linting with eslint
 
         npm install eslint --save-dev
         npx eslint --init
         
 and then, for example, run:
+
         npx eslint main.js
         npx eslint coursesController.js --fix
         
@@ -40,16 +42,17 @@ it is possible to run eslint automatically on save by configuring it under
 * https://www.jetbrains.com/help/webstorm/eslint.html#
 * https://standardjs.com/
 
-## Debugger/Logger
 
 ### Logging
     export DEBUG=*
     node main.js
 
-### oder über morgan
+#### oder über morgan:
 
 * installed morgan: npm install morgan
 * use morgan in main.js:
+
+
     const morgan = require('morgan')
     app.use(morgan(":method :url :status * :response-time ms"))
 
@@ -64,6 +67,44 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
     node: [DEP0062]: `node --debug` and `node --debug-brk` are invalid. Please use `node --    inspect` and `node --inspect-brk` instead.
 
 * Debugging node in WebStorm: https://www.jetbrains.com/help/webstorm/running-and-debugging-node-js.html#
+
+## Deployment on Heroku
+
+### Installing Heroku CLI
+
+- Follow the Installation instructions for your Platform here: Heroku CLI: 
+[https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+
+    heroku create
+
+this automatically puts a new heroku remote into the git config, run
+
+    cat .git/config
+
+to confirm that if you are curious
+
+### Create and Rename your Heroku app
+
+Your app should be named according to your group name; please use this form: wtat1-group-x .
+
+    heroku rename wtat1-module-handbook
+
+### Preparing the Codebase
+
+After setting up the heroku cli (command line interface), you can go straight to "Preparing your Codebase for Heroku Deployment":
+
+- [Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
+
+*  [Add a Procfile](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment#3-add-a-procfile)
+
+
+    echo "web: node main.js" > Procfile
+
+* rename your app:
+
+
+    heroku rename wtat1-module-handbook
+    
 
 
 ## Testing with Mocha
@@ -87,9 +128,7 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
 * https://www.chaijs.com/api/bdd/
 * https://github.com/chaijs/chai-http
 
-    
-
-
+  
 # Sprint 03
 
 This sprint is about persisting data in the database.  
@@ -98,8 +137,11 @@ As I finally want my modules in the database, I will implement the story
 | 015 | As a program creator, I can create new Courses for a program.
 
 Note that this week is just about retrieving data and creating new simple records.
+
 I've also created an example below how the database can be populated with test data using
-mongoimport (not in the book).
+mongoimport (not in the book), which I actually switched back during the next sprint 
+as the variant shown in the book using a seeding script in JavaScript makes seeding on 
+Heroku simpler and more secure. So rather follow the book right away on seeding.
 
 ## Mongo Installation
 
@@ -108,7 +150,6 @@ you can just copy docker-compose.yml and use the scripts I've added to package.j
 
     run npm mongobash   // runs docker-compose exec mongo bash
     run npm mongo       // docker-compose up -d
-
 
 
 ## Mongo Commands
@@ -124,7 +165,12 @@ after starting the cli with ``mongo``
 
 ## Seeding the database
 
-( in the mongo container:)
+Lesson 15 ends with an example on how to seed the database using JavaScript.
+
+I tried out mongoimport in the example app, which is easier to create, but
+not as convenient to call. Seeding the database on heroku is easier if you
+have a JavaScript script as described in the book, and safer as you don't have
+to juggle your heroku database credentials around.
 
     mongoimport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses data/seed/tryout
     mongoexport --uri "mongodb://localhost:27017/modulehandbook_db" --collection=courses  > data/seed/export    
@@ -132,7 +178,7 @@ after starting the cli with ``mongo``
 ## Documentation
 - Mongoose: https://mongoosejs.com/
 - Mongoose getting started: https://mongoosejs.com/docs/index.html
-- Schematypes: https://mongoosejs.com/docs/schematypes.html
+- Schema types: https://mongoosejs.com/docs/schematypes.html
 
 
 # Sprint 01 & 02
