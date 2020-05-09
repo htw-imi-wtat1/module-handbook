@@ -6,6 +6,12 @@ name: Node.js CI
 on:
   - push
   - pull_request
+services:
+
+  mongodb:
+    image: mongo:4.2.6
+    ports:
+      - 27017:27017
 
 jobs:
   build:
