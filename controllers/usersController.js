@@ -16,6 +16,7 @@ const getUserParams = body => {
 module.exports = {
   index: (req, res, next) => {
     User.find()
+      .sort({ 'name.last': 'asc' })
       .then(users => {
         res.locals.users = users
         next()
@@ -35,7 +36,7 @@ module.exports = {
 
   create: (req, res, next) => {
     const userParams = getUserParams(req.body)
-
+    // console.log('####### user: ' + userParams.email + " "+userParams.password)
     User.create(userParams)
       .then(user => {
         res.locals.redirect = '/users'
@@ -88,8 +89,8 @@ module.exports = {
   update: (req, res, next) => {
     const userId = req.params.id
     const userParams = getUserParams(req.body)
-
-    User.findByIdAndUpdate(userId, {
+    // findOneAndUpdate
+    User.findOneAndUpdate(userId, {
       $set: userParams
     })
       .then(user => {

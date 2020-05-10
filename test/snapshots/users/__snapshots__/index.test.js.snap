@@ -97,28 +97,6 @@ exports[`User Index renders user index correctly 1`] = `
     
     <tr>
       <td>
-        <a href=\\"/users/696c617964615f6869727363\\">
-          Ilayda Kulma
-        </a>
-      </td>
-      <td>
-        ilayda_hirsch81@gmail.com
-      </td>
-      <td>
-        36953
-      </td>
-      <td>
-        <a href=\\"/users/696c617964615f6869727363/edit\\">
-          Edit
-        </a>
-      </td>
-      <td>
-        <a href=\\"/users/696c617964615f6869727363/delete?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
         <a href=\\"/users/646f7269616e5f626f726773\\">
           Dorian Borgschulze
         </a>
@@ -158,6 +136,28 @@ exports[`User Index renders user index correctly 1`] = `
       </td>
       <td>
         <a href=\\"/users/73756d6d6572383840796168/delete?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <a href=\\"/users/696c617964615f6869727363\\">
+          Ilayda Kulma
+        </a>
+      </td>
+      <td>
+        ilayda_hirsch81@gmail.com
+      </td>
+      <td>
+        36953
+      </td>
+      <td>
+        <a href=\\"/users/696c617964615f6869727363/edit\\">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a href=\\"/users/696c617964615f6869727363/delete?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
       </td>
     </tr>
     

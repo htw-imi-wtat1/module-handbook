@@ -92,16 +92,6 @@ exports[`Courses Index renders course index correctly 1`] = `
     </tr>
 
     
-    <tr onclick = \\"location.href='courses/42345f5f5f5f5f5f5f5f5f5f'\\">
-        <td></td>
-        <td>B4</td>
-        <td>Mathematik  für Medieninformatik 1</td>
-        <td></td>
-        <td>P SL/Ü</td>
-        <td>2</td>
-    </tr>
-
-    
     <tr onclick = \\"location.href='courses/4231365f5f5f5f5f5f5f5f5f'\\">
         <td></td>
         <td>B16</td>
@@ -118,6 +108,16 @@ exports[`Courses Index renders course index correctly 1`] = `
         <td>Wahlpflichtmodul 2</td>
         <td></td>
         <td>WP SL/Ü</td>
+        <td>2</td>
+    </tr>
+
+    
+    <tr onclick = \\"location.href='courses/42345f5f5f5f5f5f5f5f5f5f'\\">
+        <td></td>
+        <td>B4</td>
+        <td>Mathematik  für Medieninformatik 1</td>
+        <td></td>
+        <td>P SL/Ü</td>
         <td>2</td>
     </tr>
 

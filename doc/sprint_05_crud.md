@@ -13,4 +13,18 @@
 - created snapshot test for user/index
 - created controller tests for user/edit, user/delete and user/update
 
+## Testing
+
+- created controller tests for the different actions. 
+- created controller tests
+
+### New in-memory db
+
+    npm install mongodb-memory-server --save-dev
+    
+    https://github.com/nodkz/mongodb-memory-server
+
+### Links
+* https://github.com/visionmedia/supertest
+* https://visionmedia.github.io/superagent/
 

@@ -25,6 +25,17 @@ app.use(
     extended: false
   })
 )
+/*
+app.use(function (req, res, next) {
+  console.log('-------------------------------')
+  console.log('Time:', Date.now())
+  console.log(req.url)
+  console.log(req.method)
+  console.log('req.body ' + JSON.stringify(req.body))
+  console.log(req.headers)
+  next()
+})
+*/
 
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
@@ -65,7 +76,7 @@ app.get('/courses/create', coursesController.createCourse)
 app.post('/courses', coursesController.saveCourse)
 app.get('/courses/:id', coursesController.getCourse)
 
-const User = require('./models/user')
+// const User = require('./models/user')
 const usersController = require('./controllers/usersController')
 app.get('/users', usersController.index, usersController.indexView)
 app.get('/users/new', usersController.new)
