@@ -1,6 +1,6 @@
 {
   "name": "module-handbook",
-  "version": "1.0.0",
+  "version": "0.0.5",
   "description": "A Module Handbook App for supporting collaborative module handbook authoring and summaries for studies.",
   "main": "main.js",
   "scripts": {
@@ -9,32 +9,27 @@
     "mongo": "docker-compose up -d",
     "mongobash": "docker-compose exec mongo bash",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "deploy:preview": "git push heroku-preview preview:master"
+    "test:watch": "jest --watch"
   },
   "author": "Barne Kleinen",
-
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "factory-bot": "^6.1.4",
+    "faker": "^4.1.0",
     "http-status-codes": "^1.4.0",
     "jquery": "^3.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.13",
     "popper.js": "^1.16.1",
-    "react": "^16.13.1",
-    "save-dev": "0.0.1-security"
+    "react": "^16.13.1"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.1.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "chai-http": "^4.3.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
@@ -42,9 +37,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
-    "faker": "^4.1.0",
     "jest": "^26.0.1",
-    "mongodb-memory-server": "^6.5.2",
     "nodemon": "^2.0.3",
     "open": "^7.0.3",
     "superagent": "^5.2.2",
