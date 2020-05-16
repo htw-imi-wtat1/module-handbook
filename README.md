@@ -6,6 +6,8 @@
 * see backlog below
 * App on Heroku: https://wtat1-module-handbook.herokuapp.com/
 
+__Documentation Starting with Sprint 05 can be found in the [doc/](doc/) folder__
+ 
 ## Usage
 
 * start with
@@ -13,19 +15,50 @@
     * production: node main.js
     * development: nodemon main.js  
 
-# Sprint 04: Deployment
+    # Sprint 04: Deployment
+
+    ## Linting with eslint
+
+        npm install eslint --save-dev
+        npx eslint --init
+
+    First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
+    You can find my config at .eslintrc.yml, I've tracked the questions in
+    doc/eslint-install.md
+    as they are different than the ones in the book.
+    You can make other choices if you want to.
+
+    https://www.jetbrains.com/help/webstorm/eslint.html#
+    https://standardjs.com/
+
+
+    ## Debugger/Logger
+
+    ### Logging
+        export DEBUG=*
+        node main.js
+
+    ### oder über morgan
+
+    ### debugger.
+
+        node inspect main.js
+
+        https://nodejs.org/en/docs/guides/debugging-getting-started/
+
+        node: [DEP0062]: `node --debug` and `node --debug-brk` are invalid. Please use `node --inspect` and `node --inspect-brk` instead.
 
 ## Preparation: Linting, Debugging und Logging
 ### Linting with eslint
 
         npm install eslint --save-dev
         npx eslint --init
-        
+
 and then, for example, run:
 
         npx eslint main.js
         npx eslint coursesController.js --fix
-        
+
 First run crashed with version 6.8.0, installed 7.0.0-rc.0 which worked.
 You can find my config at .eslintrc.yml, I've tracked the questions in
 doc/eslint-install.md
@@ -36,7 +69,7 @@ Just make sure that you use the same code formatting everywhere from now on!
 Make a habit of checking your changes before committing.
 
 Webstorm's format command doesn't pick up the eslint formatting rules, but
-it is possible to run eslint automatically on save by configuring it under 
+it is possible to run eslint automatically on save by configuring it under
 "Languages & Frameworks => JavaScript => Code Quality tools"
 
 * https://www.jetbrains.com/help/webstorm/eslint.html#
@@ -72,7 +105,7 @@ I use the debugger in JetBrains WebStorm. I had to create a second run configura
 
 ### Installing Heroku CLI
 
-- Follow the Installation instructions for your Platform here: Heroku CLI: 
+- Follow the Installation instructions for your Platform here: Heroku CLI:
 [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
     heroku create
@@ -104,7 +137,7 @@ After setting up the heroku cli (command line interface), you can go straight to
 
 
     heroku rename wtat1-module-handbook
-    
+
 
 
 ## Testing with Mocha
@@ -120,15 +153,15 @@ After setting up the heroku cli (command line interface), you can go straight to
     * created test for saving new courses in test/coursesControllerSaveSpec.js
     * (chose this structure to keep the examples simple)
     * I had to add `env: mocha: true` to .eslintrcyml to have eslint recognise describe and it
-          
-          
+
+
 * Mocha: https://mochajs.org/
 * Chai: https://www.chaijs.com/
 * The examples uses the expect assertion syntax: https://www.chaijs.com/guide/styles/#expect
 * https://www.chaijs.com/api/bdd/
 * https://github.com/chaijs/chai-http
 
-  
+
 # Sprint 03
 
 This sprint is about persisting data in the database.  
@@ -139,8 +172,8 @@ As I finally want my modules in the database, I will implement the story
 Note that this week is just about retrieving data and creating new simple records.
 
 I've also created an example below how the database can be populated with test data using
-mongoimport (not in the book), which I actually switched back during the next sprint 
-as the variant shown in the book using a seeding script in JavaScript makes seeding on 
+mongoimport (not in the book), which I actually switched back during the next sprint
+as the variant shown in the book using a seeding script in JavaScript makes seeding on
 Heroku simpler and more secure. So rather follow the book right away on seeding.
 
 ## Mongo Installation

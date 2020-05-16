@@ -1,6 +1,9 @@
 'use strict'
 
 const User = require('../models/user')
+const { dateViewFormat } = require('../helper/date')
+const { classForState } = require('../helper/state')
+
 const getUserParams = body => {
   return {
     name: {
@@ -51,7 +54,7 @@ module.exports = {
 
   redirectView: (req, res, next) => {
     const redirectPath = res.locals.redirect
-    if (redirectPath !== undefined) res.redirect(redirectPath)
+    if (redirectPath !== undefined) res.redirect(303, redirectPath)
     else next()
   },
 
@@ -60,8 +63,11 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.user = user
+        res.locals.dateViewFormat = dateViewFormat
+        res.locals.classForState = classForState
         next()
       })
+
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`)
         next(error)

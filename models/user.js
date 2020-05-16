@@ -3,6 +3,7 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 // const Subscriber = require('./subscriber')
+const { logEntrySchema } = require('./logEntry')
 
 var userSchema = new Schema(
   {
@@ -30,9 +31,8 @@ var userSchema = new Schema(
     password: {
       type: String,
       required: true
-    }
-    // subscribedAccount: { type: Schema.Types.ObjectId, ref: 'Subscriber' },
-    // courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }]
+    },
+    logBook: [logEntrySchema]
   },
   {
     timestamps: true
@@ -42,25 +42,5 @@ var userSchema = new Schema(
 userSchema.virtual('fullName').get(function () {
   return `${this.name.first} ${this.name.last}`
 })
-/*
-userSchema.pre('save', function (next) {
-  const user = this
-  if (user.subscribedAccount === undefined) {
-    Subscriber.findOne({
-      email: user.email
-    })
-      .then(subscriber => {
-        user.subscribedAccount = subscriber
-        next()
-      })
-      .catch(error => {
-        console.log(`Error in connecting subscriber: ${error.message}`)
-        next(error)
-      })
-  } else {
-    next()
-  }
-})
-*/
 
 module.exports = mongoose.model('User', userSchema)

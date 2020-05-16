@@ -1,6 +1,8 @@
 'use strict'
-
 const app = require('./app')
+
+const port = process.env.NODEPORT || ((process.env.NODE_ENV === 'test') ? 30020 : 3002)
+app.set('port', port)
 
 const mongodbURI = process.env.MONGODB_URI || ((process.env.NODE_ENV === 'test') ? 'mongodb://localhost:27017/modulehandbook_test_db' : 'mongodb://localhost:27017/modulehandbook_db')
 const mongoose = require('mongoose')

@@ -6,16 +6,14 @@ const homeController = require('./controllers/homeController')
 const searchController = require('./controllers/searchController')
 const errorController = require('./controllers/errorController')
 const coursesController = require('./controllers/coursesController')
+const usersController = require('./controllers/usersController')
+const logEntriesController = require('./controllers/logEntriesController')
 const layouts = require('express-ejs-layouts')
 const path = require('path')
 const methodOverride = require('method-override')
 
-// const morgan = require('morgan')
-// app.use(morgan(":method :url :status * :response-time ms"))
-
-const port = process.env.PORT || ((process.env.NODE_ENV === 'test') ? 30020 : 3002)
-
-app.set('port', port)
+const morgan = require('morgan')
+app.use(morgan(':method :url :status * :response-time ms'))
 
 app.set('view engine', 'ejs')
 app.use(layouts)
@@ -60,15 +58,17 @@ app.use(function (req, res, next) {
   }
   next()
 })
-
+app.use((req, res, next) => { console.log(req.method); next() })
 app.use(
   methodOverride('_method', {
     methods: ['POST', 'GET']
   })
 )
 
+app.use((req, res, next) => { console.log(req.method); next() })
+
 app.get('/modules/:format?', homeController.showStudentView)
-app.get('/about/', homeController.showAbout)
+app.get('/about', homeController.showAbout)
 app.post('/about', searchController.search)
 
 app.get('/courses', coursesController.getAllCourses)
@@ -76,8 +76,12 @@ app.get('/courses/create', coursesController.createCourse)
 app.post('/courses', coursesController.saveCourse)
 app.get('/courses/:id', coursesController.getCourse)
 
-// const User = require('./models/user')
-const usersController = require('./controllers/usersController')
+app.get('/users/:id/log_entries/new', logEntriesController.new)
+app.get('/users/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
+app.put('/users/:id/log_entries/:logEntryId', logEntriesController.update, logEntriesController.redirectView)
+app.delete('/users/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
+app.post('/users/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
+
 app.get('/users', usersController.index, usersController.indexView)
 app.get('/users/new', usersController.new)
 app.post('/users/create', usersController.create, usersController.redirectView)
@@ -85,6 +89,7 @@ app.get('/users/:id/edit', usersController.edit)
 app.put('/users/:id/update', usersController.update, usersController.redirectView)
 app.get('/users/:id', usersController.show, usersController.showView)
 app.delete('/users/:id/delete', usersController.delete, usersController.redirectView)
+
 app.get('/', homeController.showIndex)
 
 app.use(errorController.pageNotFoundError)

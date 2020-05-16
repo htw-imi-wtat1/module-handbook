@@ -12,12 +12,13 @@ exports[`Course Show renders course show correctly 1`] = `
 	<link rel=\\"stylesheet\\" href=\\"/css/bootstrap.css\\">
 	<link rel=\\"stylesheet\\" href=\\"/css/module_handbook.css\\">
 	<script src=\\"/jquery.min.js\\"></script>
-	<!--<script src=\\"/popper.js\\"></script>-->
+	<script src=\\"/popper.js\\"></script>
 	<script src=\\"/js/bootstrap.min.js\\"></script>
 
 </head>
 
 <body>
+<div class = \\"container\\">
 	<div id=\\"nav\\">
 		<div class=\\"col-sm nav-align\\">
 			<h1 id=\\"title\\">Module Handbook</h1>
@@ -75,12 +76,12 @@ exports[`Course Show renders course show correctly 1`] = `
         </form>
     </div>
 </nav>
-/courses/<replaced_mongoose_id>
 
 	</div>
-
-	<p>Course.</p>
+	<div class = \\"container\\">
+	  <p>Course.</p>
 <p>[&#34;code&#34;,&#34;name&#34;,&#34;ects&#34;,&#34;mission&#34;,&#34;examination&#34;,&#34;objectives&#34;,&#34;contents&#34;,&#34;prerequisites&#34;,&#34;literature&#34;,&#34;methods&#34;,&#34;skills_knowledge_understanding&#34;,&#34;skills_intellectual&#34;,&#34;skills_practical&#34;,&#34;skills_general&#34;]</p>
+<h1>B13_index_snapshot - Bildverarbeitung</h1>
 <p></p>
 <table>
     
@@ -113,6 +114,9 @@ exports[`Course Show renders course show correctly 1`] = `
     <tr><td>skills_general</td><td>d</td></tr>
     
 </table>
+	</div>
+</div>
+
 
 </body>
 

@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mongo:
+  mongodb:
     image: library/mongo:4.2-bionic
     container_name: 'modulehandbook-mongo'
     environment:
@@ -9,7 +9,19 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=
     volumes:
       - ./mongo/data:/data/db
-      - ./mongo/seed:/data/seed
-      - ./mongo/config:/data/configdb
     ports:
       - 27017-27019:27017-27019
+  modhandnode:
+    container_name: modhandnode
+    restart: always
+    build: .
+    ports:
+      - "3004:3004"
+    links:
+      - mongodb
+    environment:
+      - NODEPORT=3004
+      - MONGODB_URI=mongodb://mongodb:27017/modulehandbook_db
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules

@@ -16,7 +16,7 @@ describe('user delete', () => {
     const user = await createUser()
     request(app)
       .delete(`/users/${user.id}/delete`)
-      .expect(302)
+      .expect(303)
       .then((res) => {
         User.findOne({ email: user.email }).then(u => {
           expect(u).toBeNull()

@@ -55,7 +55,7 @@ If you want your tests to run against a real database, set the environment varia
 jest run through global setup and teardown in jest.
 THUS, THE DB IS NOT CLEANED! 
 
-If you want to delete your db, you can use `cleanTestDB.js
+If you want to delete your db, you can use `cleanTestDB.js`
 
 ### Testing Express Requests
 
