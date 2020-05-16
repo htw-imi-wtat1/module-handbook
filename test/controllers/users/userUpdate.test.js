@@ -17,7 +17,7 @@ describe('user update', () => {
     request(app)
       .put(`/users/${userID}/update`)
       .send({ first: newName })
-      .expect(302)
+      .expect(303)
       .then((res) => {
         User.findById(userID)
           .exec()

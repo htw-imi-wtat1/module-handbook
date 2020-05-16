@@ -9,12 +9,13 @@
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/module_handbook.css">
 	<script src="/jquery.min.js"></script>
-	<!--<script src="/popper.js"></script>-->
+	<script src="/popper.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
+<div class = "container">
 	<div id="nav">
 		<div class="col-sm nav-align">
 			<h1 id="title">Module Handbook</h1>
@@ -22,8 +23,11 @@
 		<%- include('partials/navigation.ejs'); %>
 
 	</div>
+	<div class = "container">
+	  <%- body %>
+	</div>
+</div>
 
-	<%- body %>
 
 </body>
 

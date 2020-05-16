@@ -12,12 +12,13 @@ exports[`renders home correctly 1`] = `
 	<link rel=\\"stylesheet\\" href=\\"/css/bootstrap.css\\">
 	<link rel=\\"stylesheet\\" href=\\"/css/module_handbook.css\\">
 	<script src=\\"/jquery.min.js\\"></script>
-	<!--<script src=\\"/popper.js\\"></script>-->
+	<script src=\\"/popper.js\\"></script>
 	<script src=\\"/js/bootstrap.min.js\\"></script>
 
 </head>
 
 <body>
+<div class = \\"container\\">
 	<div id=\\"nav\\">
 		<div class=\\"col-sm nav-align\\">
 			<h1 id=\\"title\\">Module Handbook</h1>
@@ -75,11 +76,10 @@ exports[`renders home correctly 1`] = `
         </form>
     </div>
 </nav>
-/
 
 	</div>
-
-	<html>
+	<div class = \\"container\\">
+	  <html>
   <head>
     <link rel=\\"stylesheet\\" href=\\"/bootstrap.css\\" />
   </head>
@@ -90,6 +90,9 @@ exports[`renders home correctly 1`] = `
     <img src = \\"images/imi-b-spezialisierungsjahr.png\\" />
   </body>
 </html>
+
+	</div>
+</div>
 
 
 </body>

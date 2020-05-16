@@ -14,14 +14,14 @@ describe('user create', function () {
   })
 
   it('post /users/create is 302', function (done) {
-    request(app).post('/users/create').send(userData).expect(302).end(done)
+    request(app).post('/users/create').send(userData).expect(303).end(done)
   })
 
   it('post /users/create adds a user', async function (done) {
     request(app)
       .post('/users/create')
       .send(userData)
-      .expect(302)
+      .expect(303)
       .then((res) => {
         console.log(userData.email)
         User.findOne({ email: userData.email }).then(insertedRecord => {
@@ -66,7 +66,7 @@ describe('user create', function () {
     request(app)
       .post('/users/create')
       .send(userDataFlat)
-      .expect(302)
+      .expect(303)
       .then((res) => {
         User.findOne({ email: userDataFlat.email })
           .exec()
@@ -94,7 +94,7 @@ describe('user create', function () {
     request(app)
       .post('/users/create')
       .send(userData2)
-      .expect(302)
+      .expect(303)
       .then((res) => {
         User.findOne({ email: userData2.email })
           .exec()

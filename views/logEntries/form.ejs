@@ -1,0 +1,45 @@
+<p>for <%= user.fullName %>'s Study LogBook</p>
+
+<% const formAction = editing ? `/users/${user.id}/log_entries/${logEntry.id}?_method=PUT` : `/users/${user.id}/log_entries`%>
+
+<%= editing ? "editing logEntry" : "new logEntry" %>
+<%= formAction%>
+
+<form action = "<%= formAction%>" method="POST">
+    <input type = "hidden" name = "userId" value ="<%= user.id %>" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCourse">Course</label>
+            <select name = "course" id="inputCourse" class="form-control">
+                <option selected>Choose Course...</option>
+
+                <% courses.forEach(course => { if (course !== null)  %>
+                <option value = "<%= course.code %>" <%= (course.code === logEntry.course) ? "selected":"" %>><%= course.fullName %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputEvent" >Semester</label>
+            <input class = "form-control", type="number" min="1" id="semester" name ="semester" value = "<%= logEntry.semester %>"/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputEvent">Event</label>
+            <select id="inputEvent" name="event" class="form-control">
+                <% eventValues.forEach(event => {  %>
+                    <option <%= (event === logEntry.event) ? "selected":"" %>><%= event %></option>
+                <% })%>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Date</label>
+            <input name = "date" type="date" class="form-control" id="inputDate" value = "<%= (logEntry.date === null) ? "" : dateFormFormat(logEntry.date) %>" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="inputNotes">Notes</label>
+        <textarea name = "notes" rows = "5" class="form-control" id="inputNotes" placeholder="My notes..."><%= logEntry.notes %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= editing ? "Update" : "Create"%> LogEntry</button>
+</form>

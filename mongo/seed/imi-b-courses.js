@@ -1,7 +1,7 @@
 const coursesIMIB = [{
   semester: 1,
   required: 'required',
-  code: 'B1',
+  code: 'B01',
   name: 'Informatik 1',
   mission: null,
   ects: 4,
@@ -19,7 +19,7 @@ const coursesIMIB = [{
 {
   semester: 1,
   required: 'required',
-  code: 'B2',
+  code: 'B02',
   name: 'Computersysteme',
   mission: null,
   ects: 2,
@@ -37,7 +37,7 @@ const coursesIMIB = [{
 {
   semester: 1,
   required: 'required',
-  code: 'B3',
+  code: 'B03',
   name: 'Propädeutikum und  Medientheorie',
   mission: null,
   ects: 2,
@@ -55,7 +55,7 @@ const coursesIMIB = [{
 {
   semester: 1,
   required: 'required',
-  code: 'B4',
+  code: 'B04',
   name: 'Mathematik  für Medieninformatik 1',
   mission: null,
   ects: 2,
@@ -73,7 +73,7 @@ const coursesIMIB = [{
 {
   semester: 1,
   required: 'required',
-  code: 'B5',
+  code: 'B05',
   name: 'Grundlagen  der  Webprogrammierung',
   mission: null,
   ects: 2,
@@ -91,7 +91,7 @@ const coursesIMIB = [{
 {
   semester: 1,
   required: 'required',
-  code: 'B6',
+  code: 'B06',
   name: '1.  Fremdsprache         1',
   mission: null,
   ects: 4,
@@ -109,7 +109,7 @@ const coursesIMIB = [{
 {
   semester: 2,
   required: 'required',
-  code: 'B7',
+  code: 'B07',
   name: 'Informatik 2',
   mission: null,
   ects: 4,
@@ -127,7 +127,7 @@ const coursesIMIB = [{
 {
   semester: 2,
   required: 'required',
-  code: 'B8',
+  code: 'B08',
   name: 'Grundlagen Digitaler Medien',
   mission: null,
   ects: 4,
@@ -145,7 +145,7 @@ const coursesIMIB = [{
 {
   semester: 2,
   required: 'required',
-  code: 'B9',
+  code: 'B09',
   name: 'Netzwerke',
   mission: null,
   ects: 2,

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const courseSchema = mongoose.Schema({
   code: String,
+  semester: String,
   name: String,
   mission: String,
   ects: Number,
@@ -14,5 +15,8 @@ const courseSchema = mongoose.Schema({
   skills_intellectual: String,
   skills_practical: String,
   skills_general: String
+})
+courseSchema.virtual('fullName').get(function () {
+  return `${this.code} - ${this.name}`
 })
 module.exports = mongoose.model('Course', courseSchema)
