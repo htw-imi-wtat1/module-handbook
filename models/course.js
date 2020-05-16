@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const courseSchema = mongoose.Schema({
   code: String,
+  semester: String,
   name: String,
   mission: String,
   ects: Number,
