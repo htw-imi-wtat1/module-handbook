@@ -4,8 +4,8 @@
   "description": "A Module Handbook App for supporting collaborative module handbook authoring and summaries for studies.",
   "main": "main.js",
   "scripts": {
-    "run": "npm main.js",
-    "run dev": "nodemon main.js",
+    "start": "node main.js",
+    "start dev": "nodemon main.js",
     "mongo": "docker-compose up -d",
     "mongobash": "docker-compose exec mongo bash",
     "test": "jest",

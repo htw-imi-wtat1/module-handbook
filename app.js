@@ -13,10 +13,6 @@ const methodOverride = require('method-override')
 // const morgan = require('morgan')
 // app.use(morgan(":method :url :status * :response-time ms"))
 
-const port = process.env.PORT || ((process.env.NODE_ENV === 'test') ? 30020 : 3002)
-
-app.set('port', port)
-
 app.set('view engine', 'ejs')
 app.use(layouts)
 
