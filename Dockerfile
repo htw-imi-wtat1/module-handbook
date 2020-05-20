@@ -1,4 +1,4 @@
-FROM node:13
+FROM node:14.2-alpine3.11
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY package*.json ./

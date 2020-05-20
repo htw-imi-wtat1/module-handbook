@@ -11,8 +11,8 @@ services:
       - ./mongo/data:/data/db
     ports:
       - 27017-27019:27017-27019
-  module-handbook-node:
-    container_name: modulehandbooknode
+  modhandnode:
+    container_name: modhandnode
     restart: always
     build: .
     ports:
