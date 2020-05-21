@@ -36,9 +36,18 @@ function id () {
 
 function removeID (text, id) {
   const idRegExp = new RegExp(id, 'g')
-  // expect(text).toMatch(idRegExp)
   return text.replace(idRegExp, '<replaced_mongoose_id>')
 }
+
+function removeIDs (text, ids) {
+  let result = text
+  ids.forEach(id => {
+    const idRegExp = new RegExp(id, 'g')
+    result = result.replace(idRegExp, '<replaced_mongoose_id>')
+  })
+  return result
+}
+
 module.exports = {
   Course: Course,
   User: User,
@@ -47,5 +56,6 @@ module.exports = {
   supertest: request,
   id: id,
   removeID: removeID,
+  removeIDs: removeIDs,
   db: mongoose.connection
 }

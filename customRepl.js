@@ -11,3 +11,4 @@ replServer.context.mongoose = mongoose
 replServer.context.db = mongoose.connection
 replServer.context.User = require('./models/user')
 replServer.context.Course = require('./models/course')
+replServer.context.logEntrySchema = require('./models/logEntry')

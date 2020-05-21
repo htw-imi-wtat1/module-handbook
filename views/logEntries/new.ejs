@@ -14,14 +14,14 @@
     </div>
     <div class="form-group col-md-2">
       <label for="inputEvent">Semester</label>
-      <input class = "form-control", type="number" id="semester" name ="semester" />
+      <input class = "form-control", type="number" min="1" id="semester" name ="semester" />
     </div>
     <div class="form-group col-md-2">
       <label for="inputEvent">Event</label>
       <select id="inputEvent" name="event" class="form-control">
-        <option>planned</option>
-        <option>enrolled</option>
-        <option>passed</option>
+        <% eventValues.forEach(event => {  %>
+        <option><%= event %></option>
+        <% })%>
       </select>
     </div>
     <div class="form-group col-md-2">

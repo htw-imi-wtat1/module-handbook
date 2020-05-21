@@ -1,6 +1,7 @@
 'use strict'
 
 const User = require('../models/user')
+
 const getUserParams = body => {
   return {
     name: {

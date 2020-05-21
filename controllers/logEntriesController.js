@@ -2,7 +2,7 @@
 
 const User = require('../models/user')
 const Course = require('../models/course')
-const LogEntry = require('../models/course')
+const logEntrySchema = require('../models/logEntry')
 
 const getLogEntryParams = body => {
   return {
@@ -26,13 +26,13 @@ module.exports = {
       })
       .then(courses => {
         res.locals.courses = courses.map(c => { return { code: c.code, fullName: c.fullName } })
+        res.locals.eventValues = logEntrySchema.path('event').enumValues
         res.render('logEntries/new')
       })
   },
   create: (req, res, next) => {
     const params = getLogEntryParams(req.body)
     const userId = req.body.userId
-    console.log(JSON.stringify(params))
     User.findById(userId)
       .then(user => {
         user.logBook.push(params)

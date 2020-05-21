@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`User Index renders user index correctly 1`] = `
+exports[`User Index renders user show with logEntries correctly 1`] = `
 "<!DOCTYPE html>
 <html>
 
@@ -80,20 +80,20 @@ exports[`User Index renders user index correctly 1`] = `
 	</div>
 	<div class = \\"container\\">
 	  <h1 class=\\"center\\">User Data for
-  Jamila Marl
+  Enes Niklaus
 </h1>
 
 <table class=\\"table\\">
   <tr>
     <th>Name</th>
     <td>
-      Jamila Marl
+      Enes Niklaus
     </td>
   </tr>
   <tr>
     <th>Email</th>
     <td>
-      laurenz.schwandke69_@yahoo.com
+      enes_<replaced_mongoose_id>@yahoo.com
     </td>
   </tr>
   <tr>
@@ -137,6 +137,30 @@ exports[`User Index renders user index correctly 1`] = `
     </thead>
 
     <tbody>
+    
+    <tr>
+        <td>B08</td>
+        <td>4</td>
+        <td>passed</td>
+        <td>Thu May 21 2020 02:00:00 GMT+0200 (Central European Summer Time)</td>
+        <td>notes about course</td>
+        <td><a href=\\"#\\">Edit</a></td>
+        <td><a href=\\"#\\">Show</a></td>
+        <td><a href=\\"#\\">Delete</a></td>
+    </tr>
+
+    
+    <tr>
+        <td>M08</td>
+        <td>1</td>
+        <td>planned</td>
+        <td>Sat Jun 13 2020 02:00:00 GMT+0200 (Central European Summer Time)</td>
+        <td>notes about this othercourse</td>
+        <td><a href=\\"#\\">Edit</a></td>
+        <td><a href=\\"#\\">Show</a></td>
+        <td><a href=\\"#\\">Delete</a></td>
+    </tr>
+
     
 
     </tbody>

@@ -9,9 +9,9 @@
     <tr>
         <th>Course</th>
         <th>Semester</th>
-        <th>Status</th>
+        <th>Event</th>
+        <th>Date</th>
         <th>Notes</th>
-        <th>Logbook</th>
         <th colspan="3"></th>
     </tr>
     </thead>
@@ -21,10 +21,12 @@
     <tr>
         <td><%= logEntry.course %></td>
         <td><%= logEntry.semester %></td>
-        <td><%= logEntry.status %></td>
+        <td><%= logEntry.event %></td>
+        <td><%= logEntry.date %></td>
         <td><%= logEntry.notes %></td>
-        <td><%= logEntry.logBook_id %></td>
-
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Show</a></td>
+        <td><a href="#">Delete</a></td>
     </tr>
 
     <% }) %>
