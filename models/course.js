@@ -16,4 +16,7 @@ const courseSchema = mongoose.Schema({
   skills_practical: String,
   skills_general: String
 })
+courseSchema.virtual('fullName').get(function () {
+  return `${this.code} - ${this.name}`
+})
 module.exports = mongoose.model('Course', courseSchema)

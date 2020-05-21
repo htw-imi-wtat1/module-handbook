@@ -27,20 +27,14 @@
   </tr>
 </table>
 
-<% if(user.subscribedAccount !== undefined) { %>
-<h4 class="center"> This user has a
-  <a href="<%=`/subscribers/${user.subscribedAccount}`%>">
-    subscribed account </a>.
-</h4>
-<% } %>
+
 <div class="center">
   <a class="button" href="<%=`/users/${user._id}/edit`%>">
     Edit User Details
-  </a>
-</div>
-<div class="center">
+  </a> |
   <a class="button" href="<%= `/users/${user._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
-</div>
-<div class="center">
+ |
   <a class="button" href="/users">View all users</a>
 </div>
+<hr/>
+<%- include('../logEntries/index.ejs', {user: user}); %>

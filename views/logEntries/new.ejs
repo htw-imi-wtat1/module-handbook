@@ -1,0 +1,34 @@
+
+<h2>New Log Entry for <%= user.fullName%>'s Study LogBook</h2>
+<form action = "">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputCourse">Course</label>
+      <select id="inputCourse" class="form-control">
+        <option selected>Choose Course...</option>
+        <% courses.forEach(course => { %>
+        <option value = "<%= course.code %>"><%= course.fullName %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEvent">Event</label>
+      <select id="inputEvent" name="event" class="form-control">
+        <option>planned</option>
+        <option>enrolled</option>
+        <option>passed</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputZip">Date</label>
+      <input type="date" class="form-control" id="inputDate" value = "2020-05-21">
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="inputAddress">Notes</label>
+    <textarea rows = "5" class="form-control" id="inputNotes" placeholder="My notes..."></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Create LogEntry</button>
+</form>

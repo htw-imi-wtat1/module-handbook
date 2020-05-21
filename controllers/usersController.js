@@ -62,6 +62,7 @@ module.exports = {
         res.locals.user = user
         next()
       })
+
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`)
         next(error)
