@@ -1,6 +1,6 @@
 const { app, User, request, id } = require('../../commonJest')
 describe('logEntry list is shown in user show', () => {
-  let userId
+  let user
   let userData
   beforeEach((done) => {
     userData = {
@@ -22,14 +22,14 @@ describe('logEntry list is shown in user show', () => {
         notes: 'notes about this othercourse'
       }]
     }
-    User.create(userData).then(user => {
-      userId = user.id
+    User.create(userData).then(u => {
+      user = u
       done()
     }).catch(e => done(e))
   })
   it('shows logEntries in user show', (done) => {
     request(app)
-      .get(`/users/${userId}`)
+      .get(`/users/${user.id}`)
       .expect(200)
       .end((err, res) => {
         if (err) {
@@ -43,6 +43,20 @@ describe('logEntry list is shown in user show', () => {
           expect(body).toContain(new Date(logEntry.date))
           expect(body).toContain(logEntry.notes)
         }
+        done()
+      })
+  })
+  it('deletes log entry', (done) => {
+    const firstLogEntryId = user.logBook[0].id
+    request(app)
+      .delete(`/users/${user.id}/log_entries/${firstLogEntryId}`)
+      .expect(303)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+        expect(user.logBook.length).toBe(2)
+
         done()
       })
   })

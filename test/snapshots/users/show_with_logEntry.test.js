@@ -22,10 +22,12 @@ describe('User Index', function () {
     }]
   }
   let userID // this is shared state between all tests!
+  let user
   beforeAll(function (done) {
     User.create(userData)
       .then(created => {
         userID = created.id
+        user = created
         done()
       })
       .catch(error => {
@@ -34,10 +36,13 @@ describe('User Index', function () {
       })
   })
   it('renders user show with logEntries correctly', (done) => {
+    const ids = user.logBook.map(l => l.id)
+    ids.push(randId)
+    ids.push(userID)
     request(app)
       .get(`/users/${userID}`)
       .then((response) => {
-        expect(removeIDs(response.text, [userID, randId])).toMatchSnapshot()
+        expect(removeIDs(response.text, ids)).toMatchSnapshot()
         done()
       })
   })

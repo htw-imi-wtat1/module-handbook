@@ -52,7 +52,7 @@ module.exports = {
 
   redirectView: (req, res, next) => {
     const redirectPath = res.locals.redirect
-    if (redirectPath !== undefined) res.redirect(redirectPath)
+    if (redirectPath !== undefined) res.redirect(303, redirectPath)
     else next()
   },
 

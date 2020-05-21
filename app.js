@@ -57,12 +57,14 @@ app.use(function (req, res, next) {
   }
   next()
 })
-
+app.use((req, res, next) => { console.log(req.method); next() })
 app.use(
   methodOverride('_method', {
     methods: ['POST', 'GET']
   })
 )
+
+app.use((req, res, next) => { console.log(req.method); next() })
 
 app.get('/modules/:format?', homeController.showStudentView)
 app.get('/about', homeController.showAbout)

@@ -51,11 +51,25 @@ module.exports = {
   edit: (req, res, next) => {
   },
   update: (req, res, next) => {},
+
   delete: (req, res, next) => {
+    const userId = req.params.id
+    const logEntryId = req.params.logEntryId
+    User.findById(userId)
+      .then(user => {
+        user.logBook.id(logEntryId).remove()
+        user.save()
+        res.locals.redirect = `/users/${userId}`
+        next()
+      })
+      .catch(error => {
+        console.log(`Error removing logEntry by ID: ${error.message}`)
+        next()
+      })
   },
   redirectView: (req, res, next) => {
     const redirectPath = res.locals.redirect
-    if (redirectPath !== undefined) res.redirect(redirectPath)
+    if (redirectPath !== undefined) res.redirect(303, redirectPath)
     else next()
   }
 }

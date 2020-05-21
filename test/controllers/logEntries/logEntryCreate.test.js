@@ -29,7 +29,7 @@ describe('logEntry create', function () {
     request(app)
       .post(`/users/${user.id}/log_entries`)
       .send(logEntry)
-      .expect(302)
+      .expect(303)
       .then((res) => {
         User.findOne({ email: userData.email })
           .then(user => {
