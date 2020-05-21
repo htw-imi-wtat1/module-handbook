@@ -1,17 +1,22 @@
-
 <h2>New Log Entry for <%= user.fullName%>'s Study LogBook</h2>
-<form action = "">
+<form action = "<%= `/users/${user.id}/log_entries`%>" method="POST">
+  <input type = "hidden" name = "userId" value ="<%= user.id %>" />
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-6">
       <label for="inputCourse">Course</label>
-      <select id="inputCourse" class="form-control">
+      <select name = "course" id="inputCourse" class="form-control">
         <option selected>Choose Course...</option>
-        <% courses.forEach(course => { %>
-        <option value = "<%= course.code %>"><%= course.fullName %></option>
+
+        <% courses.forEach(course => { if (course !== null)  %>
+          <option value = "<%= course.code %>"><%= course.fullName %></option>
         <% }) %>
       </select>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-2">
+      <label for="inputEvent">Semester</label>
+      <input class = "form-control", type="number" id="semester" name ="semester" />
+    </div>
+    <div class="form-group col-md-2">
       <label for="inputEvent">Event</label>
       <select id="inputEvent" name="event" class="form-control">
         <option>planned</option>
@@ -19,16 +24,16 @@
         <option>passed</option>
       </select>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-2">
       <label for="inputZip">Date</label>
-      <input type="date" class="form-control" id="inputDate" value = "2020-05-21">
+      <input name = "date" type="date" class="form-control" id="inputDate" value = "2020-05-21">
     </div>
   </div>
 
 
   <div class="form-group">
-    <label for="inputAddress">Notes</label>
-    <textarea rows = "5" class="form-control" id="inputNotes" placeholder="My notes..."></textarea>
+    <label for="inputNotes">Notes</label>
+    <textarea name = "notes" rows = "5" class="form-control" id="inputNotes" placeholder="My notes..."></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Create LogEntry</button>
 </form>

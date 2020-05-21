@@ -7,7 +7,7 @@ const app = require('../app')
 // export MONGO_URL_USE_TEST='mongodb://localhost:27017/modulehandbook_test_db'
 // (note that the DB is NOT cleaned after test runs!)
 const mongodbURI = process.env.MONGO_URL_USE_TEST || process.env.MONGO_URL
-
+console.log('READING commonJest.js with mongodbURI ' + mongodbURI)
 const User = require('../models/user')
 const Course = require('../models/course')
 

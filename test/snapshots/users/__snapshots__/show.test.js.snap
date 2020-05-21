@@ -18,6 +18,7 @@ exports[`User Index renders user index correctly 1`] = `
 </head>
 
 <body>
+<div class = \\"container\\">
 	<div id=\\"nav\\">
 		<div class=\\"col-sm nav-align\\">
 			<h1 id=\\"title\\">Module Handbook</h1>
@@ -75,11 +76,10 @@ exports[`User Index renders user index correctly 1`] = `
         </form>
     </div>
 </nav>
-/users/<replaced_mongoose_id>
 
 	</div>
-
-	<h1 class=\\"center\\">User Data for
+	<div class = \\"container\\">
+	  <h1 class=\\"center\\">User Data for
   Jamila Marl
 </h1>
 
@@ -112,13 +112,39 @@ exports[`User Index renders user index correctly 1`] = `
 <div class=\\"center\\">
   <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>/edit\\">
     Edit User Details
-  </a>
-</div>
-<div class=\\"center\\">
+  </a> |
   <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>/delete?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
-</div>
-<div class=\\"center\\">
+ |
   <a class=\\"button\\" href=\\"/users\\">View all users</a>
+</div>
+<hr/>
+<h1>Study LogBook</h1>
+<div class=\\"center\\">
+    <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>/log_entries/new\\">
+        New Entry
+    </a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Course</th>
+        <th>Semester</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Logbook</th>
+        <th colspan=\\"3\\"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+    </tbody>
+</table>
+
+<br>
+
+	</div>
 </div>
 
 
