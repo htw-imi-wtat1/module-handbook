@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 // const Subscriber = require('./subscriber')
 const { logEntrySchema } = require('./logEntry')
+const passportLocalMongoose = require('passport-local-mongoose')
 
 var userSchema = new Schema(
   {
@@ -28,10 +29,6 @@ var userSchema = new Schema(
       min: [1000, 'Zip code too short'],
       max: 99999
     },
-    password: {
-      type: String,
-      required: true
-    },
     logBook: [logEntrySchema]
   },
   {
@@ -43,4 +40,5 @@ userSchema.virtual('fullName').get(function () {
   return `${this.name.first} ${this.name.last}`
 })
 
+userSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
 module.exports = mongoose.model('User', userSchema)

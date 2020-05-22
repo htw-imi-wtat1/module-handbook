@@ -24,6 +24,17 @@
 
 	</div>
 	<div class = "container">
+		<% if (flashMessages) { %>
+		<div class = "flashes mt-4">
+       <%
+				['success','warning','danger','error'].forEach (flashType =>{
+				   if (flashMessages[flashType]) { %>
+				     <div class = "alert alert-<%= flashType === 'error' ? 'danger' : flashType %> "><%= flashMessages[flashType]%></div>
+
+				<% }
+				}) %>
+		</div>
+	<% } %>
 	  <%- body %>
 	</div>
 </div>

@@ -44,12 +44,14 @@ module.exports = {
       })
       .then(user => {
         res.status(httpStatus.CREATED)
+        req.flash('success', 'LogBook Entry created successfully!')
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
         next()
       })
       .catch(error => {
         console.log(`Error adding logEntry to user: ${error.message}`)
+        req.flash('warning', `Error adding logEntry to user: ${error.message}`)
         next(error)
       })
   },
@@ -70,6 +72,7 @@ module.exports = {
       })
       .catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`)
+        req.flash('warning', `Error fetching user by ID: ${error.message}`)
         next(error)
       })
   },
@@ -86,13 +89,13 @@ module.exports = {
         return user.save()
       })
       .then(user => {
-        console.log('saved logentry')
-        console.log(user)
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
+        req.flash('success', 'LogBook Entry updated successfully!')
         next()
       })
       .catch(error => {
+        req.flash('warning', `Error updating user by ID: ${error.message}`)
         console.log(`Error updating user by ID: ${error.message}`)
         next(error)
       })
@@ -105,11 +108,13 @@ module.exports = {
       .then(user => {
         user.logBook.id(logEntryId).remove()
         user.save()
+        req.flash('success', 'LogBook Entry deleted successfully!')
         res.locals.redirect = `/users/${userId}`
         next()
       })
       .catch(error => {
         console.log(`Error removing logEntry by ID: ${error.message}`)
+        req.flash('warning', `Error removing logEntry by ID: ${error.message}`)
         next()
       })
   },

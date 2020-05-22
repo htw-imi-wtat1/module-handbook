@@ -12,6 +12,34 @@ const layouts = require('express-ejs-layouts')
 const path = require('path')
 const methodOverride = require('method-override')
 const router = express.Router()
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
+const expressSession = require('express-session')
+const User = require('./models/user')
+const connectFlash = require('connect-flash')
+
+const devSessionSecret = 'non_secure_session_secret'
+const sessionSecret = process.env.SESSION_SECRET || devSessionSecret
+if (sessionSecret === devSessionSecret) {
+  console.log('WARNING! using unsecure default SESSION_SECRET')
+}
+router.use(cookieParser(sessionSecret))
+router.use(expressSession({
+  secret: sessionSecret,
+  cookie: {
+    maxAge: 4000000
+  },
+  resave: false,
+  saveUninitialized: false
+}))
+router.use(passport.initialize())
+router.use(passport.session())
+
+passport.use(User.createStrategy())
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
+router.use(connectFlash())
 
 const morgan = require('morgan')
 app.use(morgan(':method :url :status * :response-time ms'))
@@ -29,7 +57,9 @@ app.use(function (req, res, next) {
   next()
 })
 */
+
 app.use('/', router)
+
 router.use(
   methodOverride('_method', {
     methods: ['POST', 'GET']
@@ -56,6 +86,7 @@ const menuItems = [
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
   { path: '/users', text: 'Users' },
+  { path: '/users/new', text: 'Register' },
   { path: '/about', text: 'About' }
 ]
 router.use(function (req, res, next) {
@@ -64,6 +95,12 @@ router.use(function (req, res, next) {
     const newOptions = { ...options, currentPath: req.path, menu_items: menuItems }
     _render.call(this, view, newOptions, fn)
   }
+  next()
+})
+router.use((req, res, next) => {
+  res.locals.flashMessages = req.flash()
+  res.locals.loggedIn = req.isAuthenticated()
+  res.locals.currentUser = req.user
   next()
 })
 
@@ -85,9 +122,12 @@ router.put('/users/:id/log_entries/:logEntryId', logEntriesController.update, lo
 router.delete('/users/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
 router.post('/users/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
 
+router.get('/users/login', usersController.login)
+router.post('/users/login', usersController.authenticate)
+router.get('/users/logout', usersController.logout, usersController.redirectView)
 router.get('/users', usersController.index, usersController.indexView)
 router.get('/users/new', usersController.new)
-router.post('/users', usersController.create, usersController.redirectView)
+router.post('/users', usersController.validations, usersController.create, usersController.redirectView)
 router.get('/users/:id/edit', usersController.edit)
 router.put('/users/:id', usersController.update, usersController.redirectView)
 router.get('/users/:id', usersController.show, usersController.showView)
