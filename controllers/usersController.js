@@ -2,6 +2,7 @@
 
 const User = require('../models/user')
 const { dateViewFormat } = require('../helper/date')
+const { classForState } = require('../helper/state')
 
 const getUserParams = body => {
   return {
@@ -63,6 +64,7 @@ module.exports = {
       .then(user => {
         res.locals.user = user
         res.locals.dateViewFormat = dateViewFormat
+        res.locals.classForState = classForState
         next()
       })
 

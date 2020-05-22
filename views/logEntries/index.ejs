@@ -4,7 +4,7 @@
         New Entry
     </a>
 </div>
-<table>
+<table class="table table-hover">
     <thead>
     <tr>
         <th>Course</th>
@@ -18,7 +18,7 @@
 
     <tbody>
     <% user.logBook.forEach(logEntry => { %>
-    <tr>
+    <tr class="<%= classForState(logEntry.event) %>">
         <td><%= logEntry.course %></td>
         <td><%= logEntry.semester %></td>
         <td><%= logEntry.event %></td>

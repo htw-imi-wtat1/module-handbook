@@ -1,6 +1,7 @@
 module.exports = {
   dateFormFormat: dateFormFormat,
   dateViewFormat: dateViewFormat
+
 }
 function dateFormFormat (date) {
   const realDate = (typeof date) === 'string' ? new Date(date) : date
