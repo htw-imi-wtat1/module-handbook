@@ -37,9 +37,6 @@ See
 
 ## Implementation
 
-Tasks: 
-Creating and Showing a logbook.
-
 - add LogEntry Subdocuments to the User Schema, see [Mongoose Doc: Subdocuments](https://mongoosejs.com/docs/subdocs.html)
 - LogEntries are shown on the user show page. 
   (This is a simple implementation; )
