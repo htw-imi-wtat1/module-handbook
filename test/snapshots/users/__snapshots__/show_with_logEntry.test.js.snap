@@ -113,7 +113,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
   <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>/edit\\">
     Edit User Details
   </a> |
-  <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>/delete?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
+  <a class=\\"button\\" href=\\"/users/<replaced_mongoose_id>?_method=DELETE\\" onclick=\\"return confirm('Are you sure you want to delete this record?')\\" a>Delete</a>
  |
   <a class=\\"button\\" href=\\"/users\\">View all users</a>
 </div>

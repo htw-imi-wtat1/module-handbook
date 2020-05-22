@@ -15,7 +15,7 @@ describe('user delete', () => {
   it('deletes user', async done => {
     const user = await createUser()
     request(app)
-      .delete(`/users/${user.id}/delete`)
+      .delete(`/users/${user.id}`)
       .expect(303)
       .then((res) => {
         User.findOne({ email: user.email }).then(u => {

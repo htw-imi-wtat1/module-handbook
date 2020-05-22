@@ -1,5 +1,6 @@
 'use strict'
 
+const httpStatus = require('http-status-codes')
 const User = require('../models/user')
 const { dateViewFormat } = require('../helper/date')
 const { classForState } = require('../helper/state')
@@ -42,6 +43,7 @@ module.exports = {
     // console.log('####### user: ' + userParams.email + " "+userParams.password)
     User.create(userParams)
       .then(user => {
+        res.status(httpStatus.CREATED)
         res.locals.redirect = '/users'
         res.locals.user = user
         next()
