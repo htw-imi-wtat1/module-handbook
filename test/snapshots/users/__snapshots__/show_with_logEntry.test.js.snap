@@ -124,7 +124,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
         New Entry
     </a>
 </div>
-<table>
+<table class=\\"table table-hover\\">
     <thead>
     <tr>
         <th>Course</th>
@@ -138,7 +138,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
 
     <tbody>
     
-    <tr>
+    <tr class=\\"table-success\\">
         <td>B08</td>
         <td>4</td>
         <td>passed</td>
@@ -148,7 +148,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
         <td><a href=\\"/users/<replaced_mongoose_id>/log_entries/<replaced_mongoose_id>?_method=DELETE\\"  onclick=\\"return confirm('Are you sure you want to delete this log entry?')\\" >Delete</a></td>
     </tr>
     
-    <tr>
+    <tr class=\\"table-info\\">
         <td>M08</td>
         <td>1</td>
         <td>planned</td>

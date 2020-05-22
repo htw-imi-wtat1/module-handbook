@@ -124,7 +124,7 @@ exports[`User Index renders user index correctly 1`] = `
         New Entry
     </a>
 </div>
-<table>
+<table class=\\"table table-hover\\">
     <thead>
     <tr>
         <th>Course</th>

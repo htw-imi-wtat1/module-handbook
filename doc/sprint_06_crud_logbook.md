@@ -41,3 +41,9 @@ See
 - LogEntries are shown on the user show page. 
   (This is a simple implementation; )
 - create create and update actions, form.ejs contains a form shared for edit and new actions
+
+## Enum 
+
+How to get the valid enum values:
+
+     logEntrySchema.path('event').enumValues
