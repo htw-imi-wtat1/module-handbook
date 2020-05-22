@@ -71,9 +71,14 @@ module.exports = {
     const logEntryId = req.params.logEntryId
     const params = getLogEntryParams(req.body)
 
-    User.updateOne({ _id: userId, 'logBook._id': logEntryId },
-      { $set: { 'logBook.$': params } })
+    User.findById(userId)
       .then(user => {
+        const logEntry = user.logBook.id(logEntryId)
+        logEntry.set(params)
+        return user.save()
+      })
+      .then(user => {
+        console.log('saved logentry')
         console.log(user)
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
@@ -83,7 +88,6 @@ module.exports = {
         console.log(`Error updating user by ID: ${error.message}`)
         next(error)
       })
-    next()
   },
 
   delete: (req, res, next) => {

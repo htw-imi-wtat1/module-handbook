@@ -1,6 +1,7 @@
 const { app, User, request, id } = require('../../commonJest')
 describe('logEntry list is shown in user show', () => {
   let user
+  let userId
   let userData
   beforeEach((done) => {
     userData = {
@@ -24,6 +25,7 @@ describe('logEntry list is shown in user show', () => {
     }
     User.create(userData).then(u => {
       user = u
+      userId = u.id
       done()
     }).catch(e => done(e))
   })
@@ -61,8 +63,8 @@ describe('logEntry list is shown in user show', () => {
       })
   })
 
-  it('edits log entry', (done) => {
-    const logEntryId = user.logBook[0].id
+  it('updates log entry', (done) => {
+    const logEntryId = user.logBook[1].id
     const newData = {
       course: 'M08',
       event: 'passed',
@@ -71,15 +73,17 @@ describe('logEntry list is shown in user show', () => {
       notes: 'finally'
     }
     request(app)
+      // .get(`/users/${user.id}`)
       .put(`/users/${user.id}/log_entries/${logEntryId}`)
+    // .put(`/users/${user.id}/wtf`)
       .send(newData)
       .expect(303)
       .then((res) => {
-        User.findOne({ email: userData.email })
+        User.findById(userId)
           .then(user => {
             expect(user).not.toBeNull()
             expect(user.logBook.length).toBe(2)
-            const entry = user.logBook[1]
+            const entry = user.logBook.id(logEntryId)
             expect(entry.course).toBe(newData.course)
             expect(entry.semester).toBe(newData.semester)
             expect(entry.event).toBe(newData.event)

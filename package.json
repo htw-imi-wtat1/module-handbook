@@ -39,6 +39,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.0.1",
+    "mongoose-repl": "^0.1.8",
     "nodemon": "^2.0.3",
     "open": "^7.0.3",
     "superagent": "^5.2.2",

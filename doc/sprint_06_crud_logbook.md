@@ -42,3 +42,7 @@ Creating and Showing a logbook.
 
 - added LogBook and LogEntry Subdocuments to the User Schema, see [Mongoose Doc: Subdocuments](https://mongoosejs.com/docs/subdocs.html)
 - added Button "Create LogBook/Show LogBook in user#show."
+
+## Mongoose-repl
+
+     mongoose localhost/modulehandbook_db
