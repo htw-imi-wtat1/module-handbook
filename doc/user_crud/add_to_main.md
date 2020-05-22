@@ -24,8 +24,8 @@ Needs to be added for each resource accordingly:
     const usersController = require("./controllers/usersController")
     app.get("/users", usersController.index, usersController.indexView);
     app.get("/users/new", usersController.new);
-    app.post("/users/create", usersController.create, usersController.redirectView);
+    app.post("/users", usersController.create, usersController.redirectView);
     app.get("/users/:id/edit", usersController.edit);
-    app.put("/users/:id/update", usersController.update, usersController.redirectView);
+    app.put("/users/:id", usersController.update, usersController.redirectView);
     app.get("/users/:id", usersController.show, usersController.showView);
-    app.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
+    app.delete("/users/:id", usersController.delete, usersController.redirectView);

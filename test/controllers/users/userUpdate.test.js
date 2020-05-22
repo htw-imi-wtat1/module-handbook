@@ -15,7 +15,7 @@ describe('user update', () => {
     const userID = user.id
     const newName = 'Maike'
     request(app)
-      .put(`/users/${userID}/update`)
+      .put(`/users/${userID}`)
       .send({ first: newName })
       .expect(303)
       .then((res) => {

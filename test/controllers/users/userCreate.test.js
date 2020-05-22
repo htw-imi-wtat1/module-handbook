@@ -13,13 +13,13 @@ describe('user create', function () {
     }
   })
 
-  it('post /users/create is 302', function (done) {
-    request(app).post('/users/create').send(userData).expect(303).end(done)
+  it('post /users is 303', function (done) {
+    request(app).post('/users').send(userData).expect(303).end(done)
   })
 
   it('post /users/create adds a user', async function (done) {
     request(app)
-      .post('/users/create')
+      .post('/users')
       .send(userData)
       .expect(303)
       .then((res) => {
@@ -35,14 +35,14 @@ describe('user create', function () {
   describe('with incomplete data', () => {
     function incompleteData () { return { first: 'Maurice', email: `incomplete_${id()}@ymail.com` } }
 
-    it('post /users/create with incomplete data', function (done) {
-      request(app).post('/users/create').send(incompleteData()).expect(500, done)
+    it('post /users with incomplete data', function (done) {
+      request(app).post('/users').send(incompleteData()).expect(500, done)
     })
 
     it('does not store an incomplete user', function (done) {
       const data = incompleteData()
       request(app)
-        .post('/users/create')
+        .post('/users')
         .send(data)
         .expect(500) // 500 is not the best response here, but this will be changed later on.
         .then((res) => {
@@ -54,7 +54,7 @@ describe('user create', function () {
     })
   })
 
-  it('post /users/create stores data - full data check', function (done) {
+  it('post /users stores data - full data check', function (done) {
     const userDataFlat = {
       first: 'Cecile',
       last: 'Kreutz',
@@ -64,7 +64,7 @@ describe('user create', function () {
     }
 
     request(app)
-      .post('/users/create')
+      .post('/users')
       .send(userDataFlat)
       .expect(303)
       .then((res) => {
@@ -92,7 +92,7 @@ describe('user create', function () {
     }
 
     request(app)
-      .post('/users/create')
+      .post('/users')
       .send(userData2)
       .expect(303)
       .then((res) => {

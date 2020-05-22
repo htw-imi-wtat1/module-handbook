@@ -71,10 +71,13 @@ app.get('/modules/:format?', homeController.showStudentView)
 app.get('/about', homeController.showAbout)
 app.post('/about', searchController.search)
 
-app.get('/courses', coursesController.getAllCourses)
-app.get('/courses/create', coursesController.createCourse)
-app.post('/courses', coursesController.saveCourse)
-app.get('/courses/:id', coursesController.getCourse)
+app.get('/courses', coursesController.index, usersController.indexView)
+app.get('/courses/new', coursesController.new)
+app.post('/courses', coursesController.create, usersController.redirectView)
+// app.get('/courses/:id/edit', coursesController.edit)
+// app.put('/courses/:id', coursesController.update, usersController.redirectView)
+app.get('/courses/:id', coursesController.show, usersController.showView)
+// app.delete('/courses/:id', coursesController.delete, usersController.redirectView)
 
 app.get('/users/:id/log_entries/new', logEntriesController.new)
 app.get('/users/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
@@ -84,11 +87,11 @@ app.post('/users/:id/log_entries', logEntriesController.create, logEntriesContro
 
 app.get('/users', usersController.index, usersController.indexView)
 app.get('/users/new', usersController.new)
-app.post('/users/create', usersController.create, usersController.redirectView)
+app.post('/users', usersController.create, usersController.redirectView)
 app.get('/users/:id/edit', usersController.edit)
-app.put('/users/:id/update', usersController.update, usersController.redirectView)
+app.put('/users/:id', usersController.update, usersController.redirectView)
 app.get('/users/:id', usersController.show, usersController.showView)
-app.delete('/users/:id/delete', usersController.delete, usersController.redirectView)
+app.delete('/users/:id', usersController.delete, usersController.redirectView)
 
 app.get('/', homeController.showIndex)
 

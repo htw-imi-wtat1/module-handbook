@@ -1,5 +1,6 @@
 'use strict'
 
+const httpStatus = require('http-status-codes')
 const User = require('../models/user')
 const Course = require('../models/course')
 const { logEntrySchema, LogEntry } = require('../models/logEntry')
@@ -42,6 +43,7 @@ module.exports = {
         return user.save()
       })
       .then(user => {
+        res.status(httpStatus.CREATED)
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
         next()
