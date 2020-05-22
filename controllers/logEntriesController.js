@@ -2,7 +2,8 @@
 
 const User = require('../models/user')
 const Course = require('../models/course')
-const { logEntrySchema } = require('../models/logEntry')
+const { logEntrySchema, LogEntry } = require('../models/logEntry')
+const { dateFormFormat } = require('../helper/date')
 
 const getLogEntryParams = body => {
   return {
@@ -22,11 +23,13 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.user = user
+        res.locals.logEntry = new LogEntry({ date: new Date() })
         return Course.find({}).sort({ code: 1 }).select('code name').exec()
       })
       .then(courses => {
         res.locals.courses = courses.map(c => { return { code: c.code, fullName: c.fullName } })
         res.locals.eventValues = logEntrySchema.path('event').enumValues
+        res.locals.dateFormFormat = dateFormFormat
         res.render('logEntries/new')
       })
   },
@@ -50,14 +53,17 @@ module.exports = {
   },
   edit: (req, res, next) => {
     const userId = req.params.id
+    const logEntryId = req.params.logEntryId
     User.findById(userId)
       .then(user => {
         res.locals.user = user
+        res.locals.logEntry = user.logBook.id(logEntryId)
         return Course.find({}).sort({ code: 1 }).select('code name').exec()
       })
       .then(courses => {
         res.locals.courses = courses.map(c => { return { code: c.code, fullName: c.fullName } })
         res.locals.eventValues = logEntrySchema.path('event').enumValues
+        res.locals.dateFormFormat = dateFormFormat
         res.render('logEntries/edit')
       })
       .catch(error => {

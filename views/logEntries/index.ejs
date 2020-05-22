@@ -22,7 +22,7 @@
         <td><%= logEntry.course %></td>
         <td><%= logEntry.semester %></td>
         <td><%= logEntry.event %></td>
-        <td><%= logEntry.date %></td>
+        <td><%= dateViewFormat(logEntry.date)%></td>
         <td><%= logEntry.notes %></td>
         <td><a href="<%= `/users/${user.id}/log_entries/${logEntry.id}/edit`%>">Edit</a></td>
         <td><a href="<%= `/users/${user._id}/log_entries/${logEntry.id}?_method=DELETE` %>"  onclick="return confirm('Are you sure you want to delete this log entry?')" >Delete</a></td>

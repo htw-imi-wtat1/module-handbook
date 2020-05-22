@@ -1,4 +1,5 @@
 const { app, User, request, id } = require('../../commonJest')
+const { dateViewFormat } = require('../../../helper/date')
 describe('logEntry list is shown in user show', () => {
   let user
   let userId
@@ -42,7 +43,7 @@ describe('logEntry list is shown in user show', () => {
           expect(body).toContain(logEntry.course)
           expect(body).toContain(logEntry.semester)
           expect(body).toContain(logEntry.event)
-          expect(body).toContain(new Date(logEntry.date))
+          expect(body).toContain(dateViewFormat(logEntry.date))
           expect(body).toContain(logEntry.notes)
         }
         done()
@@ -73,9 +74,7 @@ describe('logEntry list is shown in user show', () => {
       notes: 'finally'
     }
     request(app)
-      // .get(`/users/${user.id}`)
       .put(`/users/${user.id}/log_entries/${logEntryId}`)
-    // .put(`/users/${user.id}/wtf`)
       .send(newData)
       .expect(303)
       .then((res) => {

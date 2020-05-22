@@ -142,7 +142,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
         <td>B08</td>
         <td>4</td>
         <td>passed</td>
-        <td>Thu May 21 2020 02:00:00 GMT+0200 (Central European Summer Time)</td>
+        <td>2020-05-21</td>
         <td>notes about course</td>
         <td><a href=\\"/users/<replaced_mongoose_id>/log_entries/<replaced_mongoose_id>/edit\\">Edit</a></td>
         <td><a href=\\"/users/<replaced_mongoose_id>/log_entries/<replaced_mongoose_id>?_method=DELETE\\"  onclick=\\"return confirm('Are you sure you want to delete this log entry?')\\" >Delete</a></td>
@@ -152,7 +152,7 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
         <td>M08</td>
         <td>1</td>
         <td>planned</td>
-        <td>Sat Jun 13 2020 02:00:00 GMT+0200 (Central European Summer Time)</td>
+        <td>2020-06-13</td>
         <td>notes about this othercourse</td>
         <td><a href=\\"/users/<replaced_mongoose_id>/log_entries/<replaced_mongoose_id>/edit\\">Edit</a></td>
         <td><a href=\\"/users/<replaced_mongoose_id>/log_entries/<replaced_mongoose_id>?_method=DELETE\\"  onclick=\\"return confirm('Are you sure you want to delete this log entry?')\\" >Delete</a></td>

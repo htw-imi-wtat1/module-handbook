@@ -1,6 +1,7 @@
 'use strict'
 
 const User = require('../models/user')
+const { dateViewFormat } = require('../helper/date')
 
 const getUserParams = body => {
   return {
@@ -61,6 +62,7 @@ module.exports = {
     User.findById(userId)
       .then(user => {
         res.locals.user = user
+        res.locals.dateViewFormat = dateViewFormat
         next()
       })
 

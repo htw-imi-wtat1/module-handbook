@@ -78,7 +78,6 @@ app.get('/courses/:id', coursesController.getCourse)
 
 app.get('/users/:id/log_entries/new', logEntriesController.new)
 app.get('/users/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
-// app.put('/users/:id/log_entries/:logEntryId', usersController.update, usersController.redirectView)
 app.put('/users/:id/log_entries/:logEntryId', logEntriesController.update, logEntriesController.redirectView)
 app.delete('/users/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
 app.post('/users/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
