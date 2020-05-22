@@ -11,18 +11,13 @@ const logEntriesController = require('./controllers/logEntriesController')
 const layouts = require('express-ejs-layouts')
 const path = require('path')
 const methodOverride = require('method-override')
+const router = express.Router()
 
 const morgan = require('morgan')
 app.use(morgan(':method :url :status * :response-time ms'))
 
 app.set('view engine', 'ejs')
-app.use(layouts)
 
-app.use(
-  express.urlencoded({
-    extended: false
-  })
-)
 /*
 app.use(function (req, res, next) {
   console.log('-------------------------------')
@@ -34,13 +29,26 @@ app.use(function (req, res, next) {
   next()
 })
 */
+app.use('/', router)
+router.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET']
+  })
+)
 
-app.use(express.static(path.join(__dirname, '/public')))
-app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
-app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
-app.use(express.static(path.join(__dirname, '/node_modules/popper.js/dist')))
+router.use(layouts)
 
-app.use(express.json())
+router.use(express.static(path.join(__dirname, '/public')))
+router.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
+router.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
+router.use(express.static(path.join(__dirname, '/node_modules/popper.js/dist')))
+
+router.use(
+  express.urlencoded({
+    extended: false
+  })
+)
+router.use(express.json())
 
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menuItems = [
@@ -50,7 +58,7 @@ const menuItems = [
   { path: '/users', text: 'Users' },
   { path: '/about', text: 'About' }
 ]
-app.use(function (req, res, next) {
+router.use(function (req, res, next) {
   var _render = res.render
   res.render = function (view, options, fn) {
     const newOptions = { ...options, currentPath: req.path, menu_items: menuItems }
@@ -58,44 +66,36 @@ app.use(function (req, res, next) {
   }
   next()
 })
-app.use((req, res, next) => { console.log(req.method); next() })
-app.use(
-  methodOverride('_method', {
-    methods: ['POST', 'GET']
-  })
-)
 
-app.use((req, res, next) => { console.log(req.method); next() })
+router.get('/modules/:format?', homeController.showStudentView)
+router.get('/about', homeController.showAbout)
+router.post('/about', searchController.search)
 
-app.get('/modules/:format?', homeController.showStudentView)
-app.get('/about', homeController.showAbout)
-app.post('/about', searchController.search)
-
-app.get('/courses', coursesController.index, usersController.indexView)
-app.get('/courses/new', coursesController.new)
-app.post('/courses', coursesController.create, usersController.redirectView)
+router.get('/courses', coursesController.index, usersController.indexView)
+router.get('/courses/new', coursesController.new)
+router.post('/courses', coursesController.create, usersController.redirectView)
 // app.get('/courses/:id/edit', coursesController.edit)
 // app.put('/courses/:id', coursesController.update, usersController.redirectView)
-app.get('/courses/:id', coursesController.show, usersController.showView)
+router.get('/courses/:id', coursesController.show, usersController.showView)
 // app.delete('/courses/:id', coursesController.delete, usersController.redirectView)
 
-app.get('/users/:id/log_entries/new', logEntriesController.new)
-app.get('/users/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
-app.put('/users/:id/log_entries/:logEntryId', logEntriesController.update, logEntriesController.redirectView)
-app.delete('/users/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
-app.post('/users/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
+router.get('/users/:id/log_entries/new', logEntriesController.new)
+router.get('/users/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
+router.put('/users/:id/log_entries/:logEntryId', logEntriesController.update, logEntriesController.redirectView)
+router.delete('/users/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
+router.post('/users/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
 
-app.get('/users', usersController.index, usersController.indexView)
-app.get('/users/new', usersController.new)
-app.post('/users', usersController.create, usersController.redirectView)
-app.get('/users/:id/edit', usersController.edit)
-app.put('/users/:id', usersController.update, usersController.redirectView)
-app.get('/users/:id', usersController.show, usersController.showView)
-app.delete('/users/:id', usersController.delete, usersController.redirectView)
+router.get('/users', usersController.index, usersController.indexView)
+router.get('/users/new', usersController.new)
+router.post('/users', usersController.create, usersController.redirectView)
+router.get('/users/:id/edit', usersController.edit)
+router.put('/users/:id', usersController.update, usersController.redirectView)
+router.get('/users/:id', usersController.show, usersController.showView)
+router.delete('/users/:id', usersController.delete, usersController.redirectView)
 
-app.get('/', homeController.showIndex)
+router.get('/', homeController.showIndex)
 
-app.use(errorController.pageNotFoundError)
-app.use(errorController.internalServerError)
+router.use(errorController.pageNotFoundError)
+router.use(errorController.internalServerError)
 
 module.exports = app
