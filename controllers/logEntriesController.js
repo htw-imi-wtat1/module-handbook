@@ -49,6 +49,21 @@ module.exports = {
       })
   },
   edit: (req, res, next) => {
+    const userId = req.params.id
+    User.findById(userId)
+      .then(user => {
+        res.locals.user = user
+        return Course.find({}).sort({ code: 1 }).select('code name').exec()
+      })
+      .then(courses => {
+        res.locals.courses = courses.map(c => { return { code: c.code, fullName: c.fullName } })
+        res.locals.eventValues = logEntrySchema.path('event').enumValues
+        res.render('logEntries/edit')
+      })
+      .catch(error => {
+        console.log(`Error fetching user by ID: ${error.message}`)
+        next(error)
+      })
   },
 
   update: (req, res, next) => {
