@@ -4,6 +4,8 @@ const httpStatus = require('http-status-codes')
 const User = require('../models/user')
 const { dateViewFormat } = require('../helper/date')
 const { classForState } = require('../helper/state')
+const passport = require('passport')
+const { body, check, validationResult } = require('express-validator')
 
 const getUserParams = body => {
   return {
@@ -12,7 +14,6 @@ const getUserParams = body => {
       last: body.last || (body.name && body.name.last)
     },
     email: body.email,
-    password: body.password,
     zipCode: body.zipCode
   }
 }
@@ -35,23 +36,27 @@ module.exports = {
   },
 
   new: (req, res) => {
+    res.locals.user = new User()
     res.render('users/new')
   },
 
   create: (req, res, next) => {
+    if (req.skip) next()
     const userParams = getUserParams(req.body)
-    // console.log('####### user: ' + userParams.email + " "+userParams.password)
-    User.create(userParams)
-      .then(user => {
-        res.status(httpStatus.CREATED)
+    const newUser = new User(userParams)
+    User.register(newUser, req.body.password, (e, user) => {
+      if (user) {
+        req.flash('success', `${user.fullName}'s account created succesfully!`)
         res.locals.redirect = '/users'
-        res.locals.user = user
         next()
-      })
-      .catch(error => {
-        console.log(`Error saving user: ${error.message}`)
-        next(error)
-      })
+      } else {
+        req.flash('danger', `failed to create user account because: ${e.message}`)
+        res.locals.user = newUser
+        // res.locals.redirect = '/users/new'
+        //  next()
+        res.render('users/new')
+      }
+    })
   },
 
   redirectView: (req, res, next) => {
@@ -82,6 +87,7 @@ module.exports = {
 
   edit: (req, res, next) => {
     const userId = req.params.id
+    res.locals.userParams = {}
     User.findById(userId)
       .then(user => {
         res.render('users/edit', {
@@ -97,20 +103,19 @@ module.exports = {
   update: (req, res, next) => {
     const userId = req.params.id
     const userParams = getUserParams(req.body)
-    // findOneAndUpdate
-    /*
-    User.findOneAndUpdate(userId, {
-      $set: userParams
-    }) */
+
     User.updateOne({ _id: userId }, userParams)
       .then(user => {
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
+        res.locals.userParams = userParams
         next()
       })
       .catch(error => {
-        console.log(`Error updating user by ID: ${error.message}`)
-        next(error)
+        console.log('could not save user: ' + error.message)
+        req.flash('error', `Error updating user by ID: ${error.message}`)
+        res.locals.redirect = `/users/${userId}/edit`
+        next()
       })
   },
 
@@ -125,5 +130,45 @@ module.exports = {
         console.log(`Error deleting user by ID: ${error.message}`)
         next()
       })
-  }
+  },
+  login: (req, res) => {
+    res.render('users/login')
+  },
+  logout: (req, res, next) => {
+    req.logout()
+    req.flash('success', 'You have been logged out!')
+    res.locals.redirect = '/'
+    next()
+  },
+  validations: [
+    body('email')
+      .normalizeEmail({ all_lowercase: true })
+      .trim(),
+    check('email', 'Email is invalid')
+      .isEmail(),
+    check('zipCode', 'Zip code is invalid')
+      .notEmpty()
+      .isInt()
+      .isLength({ min: 5, max: 5 }),
+    (req, res, next) => {
+      const result = validationResult(req)
+      const hasErrors = !result.isEmpty()
+      if (hasErrors) {
+        const messages = result.array().map(e => e.msg)
+        req.skip = true
+        req.flash('error', messages.join(' and '))
+        res.locals.redirect = '/users/new'
+        next()
+      } else {
+        next()
+      }
+    }],
+
+  authenticate: passport.authenticate('local', {
+    failureRedirect: '/users/login',
+    failureFlash: 'Failed to login.',
+    successRedirect: '/',
+    successFlash: 'Logged in!'
+
+  })
 }
