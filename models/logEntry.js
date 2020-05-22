@@ -13,6 +13,8 @@ const logEntrySchema = mongoose.Schema(
   }, {
     timestamps: true
   })
-// module.exports = mongoose.model('LogEntry', logEntrySchema)
-// this is a subschema - just export the schema
-module.exports = logEntrySchema
+
+module.exports = {
+  logEntrySchema: logEntrySchema,
+  LogEntry: mongoose.model('LogEntry', logEntrySchema)
+}

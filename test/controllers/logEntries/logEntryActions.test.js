@@ -60,4 +60,33 @@ describe('logEntry list is shown in user show', () => {
         done()
       })
   })
+
+  it('edits log entry', (done) => {
+    const logEntryId = user.logBook[0].id
+    const newData = {
+      course: 'M08',
+      event: 'passed',
+      date: '2020-09-01',
+      semester: 12,
+      notes: 'finally'
+    }
+    request(app)
+      .put(`/users/${user.id}/log_entries/${logEntryId}`)
+      .send(newData)
+      .expect(303)
+      .then((res) => {
+        User.findOne({ email: userData.email })
+          .then(user => {
+            expect(user).not.toBeNull()
+            expect(user.logBook.length).toBe(2)
+            const entry = user.logBook[1]
+            expect(entry.course).toBe(newData.course)
+            expect(entry.semester).toBe(newData.semester)
+            expect(entry.event).toBe(newData.event)
+            expect(Date.parse(entry.date)).toStrictEqual(Date.parse(newData.date))
+            expect(entry.notes).toBe(newData.notes)
+            done()
+          })
+      }).catch(e => done(e))
+  })
 })

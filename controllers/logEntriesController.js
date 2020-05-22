@@ -2,7 +2,7 @@
 
 const User = require('../models/user')
 const Course = require('../models/course')
-const logEntrySchema = require('../models/logEntry')
+const { logEntrySchema } = require('../models/logEntry')
 
 const getLogEntryParams = body => {
   return {
@@ -50,7 +50,26 @@ module.exports = {
   },
   edit: (req, res, next) => {
   },
-  update: (req, res, next) => {},
+
+  update: (req, res, next) => {
+    const userId = req.params.id
+    const logEntryId = req.params.logEntryId
+    const params = getLogEntryParams(req.body)
+
+    User.updateOne({ _id: userId, 'logBook._id': logEntryId },
+      { $set: { 'logBook.$': params } })
+      .then(user => {
+        console.log(user)
+        res.locals.redirect = `/users/${userId}`
+        res.locals.user = user
+        next()
+      })
+      .catch(error => {
+        console.log(`Error updating user by ID: ${error.message}`)
+        next(error)
+      })
+    next()
+  },
 
   delete: (req, res, next) => {
     const userId = req.params.id

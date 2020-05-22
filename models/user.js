@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 // const Subscriber = require('./subscriber')
-const logEntrySchema = require('./logEntry')
+const { logEntrySchema } = require('./logEntry')
 
 var userSchema = new Schema(
   {
