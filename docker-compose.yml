@@ -20,7 +20,7 @@ services:
     links:
       - mongodb
     environment:
-      - NODEPORT=3004
+      - PORT=3004
       - MONGODB_URI=mongodb://mongodb:27017/modulehandbook_db
     volumes:
       - .:/usr/src/app
