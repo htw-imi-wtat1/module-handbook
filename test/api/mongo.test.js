@@ -3,7 +3,7 @@ describe('insert', () => {
   it('should insert a doc into collection', async done => {
     const users = db.collection('adhocusers')
     const id = 'some-user-id' + Math.ceil((Math.random() * 10000))
-    console.log('key: ' + id)
+    // console.log('key: ' + id)
     const mockUser = { _id: id, name: 'John' }
     await users.insertOne(mockUser)
 

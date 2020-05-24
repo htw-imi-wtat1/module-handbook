@@ -4,6 +4,7 @@
 * npm install passport express-session cookie-parser passport-local-mongoose
 * use and initialize passport in app.js - also compare with the
   [Passport Doc](http://www.passportjs.org/docs/)
+* Cookies are set via express response directly: https://expressjs.com/de/api.html#res.cookie
 
 ## The Session Secret
 
@@ -43,3 +44,15 @@ version is 6.4. and it's api has significantly changed.
 * a list of checks can be found in the validator.js doc:
   [https://github.com/validatorjs/validator.js#validators](https://github.com/validatorjs/validator.js#validators)
  
+## Extras
+
+* Include Helmet: [https://helmetjs.github.io/](https://helmetjs.github.io/)
+
+* Cookie Banner and Data Privacy Policy
+    * many HTW-Sites just link the HTW Berlin Datenschutzerklärung: [https://www.htw-berlin.de/datenschutz/](https://www.htw-berlin.de/datenschutz/)
+      / English:[https://www.htw-berlin.de/en/data-privacy-policy/](https://www.htw-berlin.de/en/data-privacy-policy/)
+    * added Cookie Banner with Bootstrap modal: https://getbootstrap.com/docs/4.5/components/modal/
+    * I used this page to generate the privacy policy: 
+     https://www.ratgeberrecht.eu/leistungen/muster-datenschutzerklaerung.html#englische-version-ihrer-muster-datenschutzerklaerung
+    * alternative with more information: https://www.e-recht24.de/artikel/datenschutz/10718-dsgvo-datenschutzerklaerung-generator.html
+    * I came to the unclusion that it is ok to store a cookie to record wether ok was clicked, see [Examptions to the consent requirement](https://www.iubenda.com/en/help/5525-cookies-gdpr-requirements#exemptions)

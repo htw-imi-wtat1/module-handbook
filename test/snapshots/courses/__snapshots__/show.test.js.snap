@@ -14,7 +14,6 @@ exports[`Course Show renders course show correctly 1`] = `
 	<script src=\\"/jquery.min.js\\"></script>
 	<script src=\\"/popper.js\\"></script>
 	<script src=\\"/js/bootstrap.min.js\\"></script>
-
 </head>
 
 <body>
@@ -32,6 +31,13 @@ exports[`Course Show renders course show correctly 1`] = `
 
     <div class=\\"collapse navbar-collapse\\" id=\\"navbarSupportedContent\\">
         <ul class=\\"navbar-nav mr-auto\\">
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/about\\">About
+        
+    </a>
+</li>
+
             
                 <li class=\\"nav-item \\">
     <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
@@ -68,13 +74,6 @@ exports[`Course Show renders course show correctly 1`] = `
 </li>
 
             
-                <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/about\\">About
-        
-    </a>
-</li>
-
-            
 
 
                     
@@ -87,7 +86,37 @@ exports[`Course Show renders course show correctly 1`] = `
 
     </div>
 </nav>
+		
 
+<div class=\\"modal fade\\" id=\\"cookieBanner\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-labelledby=\\"exampleModalLabel\\" aria-hidden=\\"true\\">
+    <div class=\\"modal-dialog\\">
+    <div class=\\"modal-content\\">
+    <div class=\\"modal-header\\">
+    <h5 class=\\"modal-title\\" id=\\"exampleModalLabel\\">Data Privacy Warning and Cookie Consent</h5>
+<button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+    <span aria-hidden=\\"true\\">&times;</span>
+</button>
+</div>
+<div class=\\"modal-body\\">
+This is an example website for teaching and learning the MERN stack.
+This site uses cookies
+to store session state and handle user authentication.
+It is not fully functional and may have bugs. Do not enter any
+personal or sensitive data on this site!
+</div>
+
+<div class=\\"modal-footer\\">
+    <button type=\\"button\\" class=\\"btn btn-success\\" data-dismiss=\\"modal\\" onclick=\\"cookiesOK()\\">OK, understood!</button>
+    <button type=\\"button\\" class=\\"btn btn-warning\\" data-dismiss=\\"modal\\" onclick=\\"cookiesReadMore()\\">Read More</button>
+    <button type=\\"button\\" class=\\"btn btn-danger\\" data-dismiss=\\"modal\\" onclick=\\"cookiesGoodBye()\\">No Thanks. Take me somewhere else.</button>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src=\\"/js/cookieBanner.js\\"></script>
 	</div>
 	<div class = \\"container\\">
 		

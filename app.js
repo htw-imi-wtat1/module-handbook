@@ -6,6 +6,7 @@ const homeController = require('./controllers/homeController')
 const searchController = require('./controllers/searchController')
 const errorController = require('./controllers/errorController')
 const coursesController = require('./controllers/coursesController')
+const cookieController = require('./controllers/cookieController')
 const usersController = require('./controllers/usersController')
 const logEntriesController = require('./controllers/logEntriesController')
 const layouts = require('express-ejs-layouts')
@@ -17,12 +18,22 @@ const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const User = require('./models/user')
 const connectFlash = require('connect-flash')
+const helmet = require('helmet')
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+    styleSrc: ["'self'"],
+    upgradeInsecureRequests: true
+  }
+}))
 
 const devSessionSecret = 'non_secure_session_secret'
 const sessionSecret = process.env.SESSION_SECRET || devSessionSecret
 if (sessionSecret === devSessionSecret) {
   console.log('WARNING! using unsecure default SESSION_SECRET')
 }
+
 router.use(cookieParser(sessionSecret))
 router.use(expressSession({
   secret: sessionSecret,
@@ -41,8 +52,8 @@ passport.deserializeUser(User.deserializeUser())
 
 router.use(connectFlash())
 
-const morgan = require('morgan')
-app.use(morgan(':method :url :status * :response-time ms'))
+// const morgan = require('morgan')
+// app.use(morgan(':method :url :status * :response-time ms'))
 
 app.set('view engine', 'ejs')
 
@@ -50,14 +61,13 @@ app.set('view engine', 'ejs')
 app.use(function (req, res, next) {
   console.log('-------------------------------')
   console.log('Time:', Date.now())
-  console.log(req.url)
-  console.log(req.method)
-  console.log('req.body ' + JSON.stringify(req.body))
-  console.log(req.headers)
+  console.log(req.method + ' ' + req.url)
+  // console.log('req.body ' + JSON.stringify(req.body))
+  // console.log(req.headers)
+
   next()
 })
 */
-
 app.use('/', router)
 
 router.use(
@@ -82,12 +92,12 @@ router.use(express.json())
 
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menuItems = [
+  { path: '/about', text: 'About' },
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
   { path: '/users', text: 'Users' },
-  { path: '/users/new', text: 'Register' },
-  { path: '/about', text: 'About' }
+  { path: '/users/new', text: 'Register' }
 ]
 router.use(function (req, res, next) {
   var _render = res.render
@@ -104,6 +114,10 @@ router.use((req, res, next) => {
   next()
 })
 
+router.use(cookieController.banner)
+router.get('/cookieBanner/OK', cookieController.bannerOK)
+router.get('/cookieBanner/SkipOnce', cookieController.bannerSkipOnce)
+router.get('/cookieBanner/deleteCookie', cookieController.deleteBannerCookie)
 router.get('/modules/:format?', homeController.showStudentView)
 router.get('/about', homeController.showAbout)
 router.post('/about', searchController.search)
