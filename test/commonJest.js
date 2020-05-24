@@ -30,10 +30,6 @@ afterAll(async () => {
   console.log('+++++ afterAll DB Close')
 })
 
-function id () {
-  return (Math.ceil(Math.random() * 1000000)).toString()
-}
-
 function removeID (text, id) {
   const idRegExp = new RegExp(id, 'g')
   return text.replace(idRegExp, '<replaced_mongoose_id>')
@@ -47,7 +43,7 @@ function removeIDs (text, ids) {
   })
   return result
 }
-
+const { id } = require('./helper/testHelpers')
 module.exports = {
   Course: Course,
   User: User,
