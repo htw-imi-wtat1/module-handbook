@@ -23,7 +23,7 @@ describe('user create', function () {
       .send(userData)
       .expect(303)
       .then((res) => {
-        console.log(userData.email)
+        // console.log(userData.email)
         User.findOne({ email: userData.email }).then(insertedRecord => {
           expect(insertedRecord).not.toBeNull()
           expect(userData).not.toBeNull()

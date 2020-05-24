@@ -50,7 +50,6 @@ module.exports = {
         next()
       })
       .catch(error => {
-        console.log(`Error adding logEntry to user: ${error.message}`)
         req.flash('warning', `Error adding logEntry to user: ${error.message}`)
         next(error)
       })
@@ -96,7 +95,6 @@ module.exports = {
       })
       .catch(error => {
         req.flash('warning', `Error updating user by ID: ${error.message}`)
-        console.log(`Error updating user by ID: ${error.message}`)
         next(error)
       })
   },

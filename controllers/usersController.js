@@ -53,7 +53,7 @@ module.exports = {
         req.flash('danger', `failed to create user account because: ${e.message}`)
         res.locals.user = newUser
         // res.locals.redirect = '/users/new'
-        //  next()
+        // next()
         res.render('users/new')
       }
     })
@@ -108,7 +108,6 @@ module.exports = {
       .then(user => {
         res.locals.redirect = `/users/${userId}`
         res.locals.user = user
-        res.locals.userParams = userParams
         next()
       })
       .catch(error => {

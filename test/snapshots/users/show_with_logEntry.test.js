@@ -31,7 +31,7 @@ describe('User Index', function () {
         done()
       })
       .catch(error => {
-        console.log('error caught: ' + error.message)
+        // console.log('error caught: ' + error.message)
         done(error.message)
       })
   })
