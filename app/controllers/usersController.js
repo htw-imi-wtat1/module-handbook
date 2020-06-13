@@ -130,15 +130,7 @@ module.exports = {
         next()
       })
   },
-  login: (req, res) => {
-    res.render('users/login')
-  },
-  logout: (req, res, next) => {
-    req.logout()
-    req.flash('success', 'You have been logged out!')
-    res.locals.redirect = '/'
-    next()
-  },
+
   validations: [
     body('email')
       .normalizeEmail({ all_lowercase: true })
@@ -163,11 +155,22 @@ module.exports = {
       }
     }],
 
+  login: (req, res) => {
+    res.render('users/login')
+  },
+
+  logout: (req, res, next) => {
+    req.logout()
+    req.flash('success', 'You have been logged out!')
+    res.locals.redirect = '/'
+    next()
+  },
+
   authenticate: passport.authenticate('local', {
     failureRedirect: '/users/login',
     failureFlash: 'Failed to login.',
-    successRedirect: '/',
+    // successRedirect: '/',
+    successRedirect: '/authorizationPlayground/status',
     successFlash: 'Logged in!'
-
   })
 }

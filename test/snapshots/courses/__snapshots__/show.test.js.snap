@@ -40,6 +40,13 @@ exports[`Course Show renders course show correctly 1`] = `
 
             
                 <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/authorizationPlayground\\">Auth Playground
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
     <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
         
     </a>
@@ -125,7 +132,7 @@ personal or sensitive data on this site!
 		</div>
 	
 	  <p>Course.</p>
-<p>[&#34;code&#34;,&#34;name&#34;,&#34;ects&#34;,&#34;mission&#34;,&#34;examination&#34;,&#34;objectives&#34;,&#34;contents&#34;,&#34;prerequisites&#34;,&#34;literature&#34;,&#34;methods&#34;,&#34;skills_knowledge_understanding&#34;,&#34;skills_intellectual&#34;,&#34;skills_practical&#34;,&#34;skills_general&#34;]</p>
+<p>[&#34;code&#34;,&#34;name&#34;,&#34;semester&#34;,&#34;ects&#34;,&#34;mission&#34;,&#34;examination&#34;,&#34;objectives&#34;,&#34;contents&#34;,&#34;prerequisites&#34;,&#34;literature&#34;,&#34;methods&#34;,&#34;skills_knowledge_understanding&#34;,&#34;skills_intellectual&#34;,&#34;skills_practical&#34;,&#34;skills_general&#34;]</p>
 <h1>B13_index_snapshot - Bildverarbeitung</h1>
 <p></p>
 <table>
@@ -133,6 +140,8 @@ personal or sensitive data on this site!
     <tr><td>code</td><td>B13_index_snapshot</td></tr>
     
     <tr><td>name</td><td>Bildverarbeitung</td></tr>
+    
+    <tr><td>semester</td><td>3</td></tr>
     
     <tr><td>ects</td><td>2</td></tr>
     

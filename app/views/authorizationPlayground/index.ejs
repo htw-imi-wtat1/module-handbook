@@ -1,0 +1,15 @@
+<h1>Authorization Playground</h1>
+
+
+<p>Action: <%= action %></p>
+<p>User: <%= user %></p>
+<p>url: <%= url %></p>
+<p>token: <%= token %></p>
+
+<p>Session ID:  <%= sessionID %></p>
+<p>
+    <% authorizationPlaygroundLinks.forEach( route => { %>
+        <a href="/authorizationPlayground/<%= route %>"><%= route %></a> |
+
+    <% }) %>
+</p>

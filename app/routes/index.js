@@ -6,7 +6,7 @@ const courseRoutes = require('./courseRoutes')
 const homeRoutes = require('./homeRoutes')
 const cookieRoutes = require('./cookieRoutes')
 const cookieController = require('../controllers/cookieController')
-
+const authorizationPlaygroundRoutes = require('./authorizationPlaygroundRoutes')
 // const errorRoutes = require('./errorRoutes')
 
 const layouts = require('express-ejs-layouts')
@@ -21,7 +21,7 @@ const connectFlash = require('connect-flash')
 
 const devSessionSecret = 'non_secure_session_secret'
 const sessionSecret = process.env.SESSION_SECRET || devSessionSecret
-if (sessionSecret === devSessionSecret) {
+if ((sessionSecret === devSessionSecret) && (process.env.NODE_ENV === 'production')) {
   console.log('WARNING! using unsecure default SESSION_SECRET')
 }
 
@@ -59,9 +59,27 @@ router.use(
 )
 router.use(express.json())
 
+router.use(function (req, res, next) {
+  console.log('-------------------------------')
+  console.log('Time:', Date.now())
+  console.log(req.method + ' ' + req.url)
+  console.log('authenticated: ' + req.isAuthenticated())
+  if (typeof req.signedCookies === 'undefined') {
+    console.log('no signed Cookies')
+  } else {
+    console.log('session id: ' + req.signedCookies['connect.sid'])
+  }
+  console.log(expressSession)
+  // console.log('req.body ' + JSON.stringify(req.body))
+  // console.log(req.headers)
+
+  next()
+})
+
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menuItems = [
   { path: '/about', text: 'About' },
+  { path: '/authorizationPlayground', text: 'Auth Playground' },
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
@@ -83,7 +101,9 @@ router.use((req, res, next) => {
   next()
 })
 
-router.use(cookieController.banner)
+router.use(cookieController.banner) // needs to go first, sets variables for cookieModal
+
+router.use('/authorizationPlayground', authorizationPlaygroundRoutes)
 router.use('/cookieBanner', cookieRoutes)
 
 router.use('/courses', courseRoutes)
