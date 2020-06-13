@@ -1,0 +1,21 @@
+const router = require('express').Router()
+const usersController = require('../controllers/usersController')
+const logEntriesController = require('../controllers/logEntriesController')
+
+router.get('/:id/log_entries/new', logEntriesController.new)
+router.get('/:id/log_entries/:logEntryId/edit', logEntriesController.edit)
+router.put('/:id/log_entries/:logEntryId', logEntriesController.update, logEntriesController.redirectView)
+router.delete('/:id/log_entries/:logEntryId', logEntriesController.delete, logEntriesController.redirectView)
+router.post('/:id/log_entries', logEntriesController.create, logEntriesController.redirectView)
+
+router.get('/login', usersController.login)
+router.post('/login', usersController.authenticate)
+router.get('/logout', usersController.logout, usersController.redirectView)
+router.get('/', usersController.index, usersController.indexView)
+router.get('/new', usersController.new)
+router.post('/', usersController.validations, usersController.create, usersController.redirectView)
+router.get('/:id/edit', usersController.edit)
+router.put('/:id', usersController.update, usersController.redirectView)
+router.get('/:id', usersController.show, usersController.showView)
+router.delete('/:id', usersController.delete, usersController.redirectView)
+module.exports = router
