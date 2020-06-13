@@ -5,7 +5,7 @@ const httpStatus = require('http-status-codes')
 exports.pageNotFoundError = (req, res) => {
   const errorCode = httpStatus.NOT_FOUND
   res.status(errorCode)
-  res.render('error')
+  res.send(`${errorCode} | Page or resource not found!`)
 }
 
 exports.internalServerError = (error, req, res, next) => {

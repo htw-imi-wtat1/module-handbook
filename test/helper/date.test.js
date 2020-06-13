@@ -1,4 +1,4 @@
-const { dateFormFormat } = require('../../helper/date')
+const { dateFormFormat } = require('../../app/helper/date')
 
 describe('dateViewFormat', () => {
   it('formats date', () => {
