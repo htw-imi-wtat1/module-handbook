@@ -3,7 +3,7 @@
 const httpStatus = require('http-status-codes')
 const Course = require('../models/course')
 // const fields = Object.keys(Course.schema.paths);
-const fields = ['code', 'name', 'ects', 'mission', 'examination', 'objectives', 'contents', 'prerequisites', 'literature', 'methods', 'skills_knowledge_understanding', 'skills_intellectual', 'skills_practical', 'skills_general']
+const fields = ['code', 'name', 'semester', 'ects', 'mission', 'examination', 'objectives', 'contents', 'prerequisites', 'literature', 'methods', 'skills_knowledge_understanding', 'skills_intellectual', 'skills_practical', 'skills_general']
 
 // console.log(fields);
 

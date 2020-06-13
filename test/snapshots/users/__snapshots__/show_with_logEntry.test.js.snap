@@ -40,6 +40,13 @@ exports[`User Index renders user show with logEntries correctly 1`] = `
 
             
                 <li class=\\"nav-item \\">
+    <a class=\\"nav-link\\" href=\\"/authorizationPlayground\\">Auth Playground
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
     <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
         
     </a>
