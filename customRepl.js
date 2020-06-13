@@ -9,9 +9,9 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true }
 replServer.context.mongoose = mongoose
 replServer.context.db = mongoose.connection
 
-replServer.context.User = require('./models/user')
-replServer.context.Course = require('./models/course')
-const { logEntrySchema, LogEntry } = require('./models/logEntry')
+replServer.context.User = require('./app/models/user')
+replServer.context.Course = require('./app/models/course')
+const { logEntrySchema, LogEntry } = require('./app/models/logEntry')
 replServer.context.logEntrySchema = logEntrySchema
 replServer.context.LogEntry = LogEntry
 replServer.context.params = {

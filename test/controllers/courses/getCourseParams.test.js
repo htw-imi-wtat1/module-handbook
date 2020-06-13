@@ -1,4 +1,4 @@
-const coursesController = require('../../../controllers/coursesController')
+const coursesController = require('../../../app/controllers/coursesController')
 
 describe('coursesController', function () {
   describe('getCourseParams', function () {

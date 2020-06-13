@@ -1,5 +1,5 @@
 const { app, User, request, id } = require('../../commonJest')
-const { dateViewFormat } = require('../../../helper/date')
+const { dateViewFormat } = require('../../../app/helper/date')
 describe('logEntry list is shown in user show', () => {
   let user
   let userId

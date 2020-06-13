@@ -44,7 +44,7 @@ if (process.env.CYPRESS_TEST_RUN) {
     console.log('Successfully connected to MongoDB using Mongoose!')
   })
 }
-const app = require('./app')
+const app = require('./app/app')
 app.set('port', port)
 
 app.listen(app.get('port'), () => {

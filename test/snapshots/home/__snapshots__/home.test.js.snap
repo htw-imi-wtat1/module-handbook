@@ -130,9 +130,9 @@ personal or sensitive data on this site!
   </head>
   <body>
     <h1>Modul&uuml;bersicht Internationale Medieninformatik</h1>
-    <img src = \\"images/imi-b-basisjahr.png\\" />
-    <img src = \\"images/imi-b-vertiefungsjahr.png\\" />
-    <img src = \\"images/imi-b-spezialisierungsjahr.png\\" />
+    <img src = \\"/images/imi-b-basisjahr.png\\" />
+    <img src = \\"/images/imi-b-vertiefungsjahr.png\\" />
+    <img src = \\"/images/imi-b-spezialisierungsjahr.png\\" />
   </body>
 </html>
 

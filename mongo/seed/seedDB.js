@@ -1,7 +1,7 @@
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/modulehandbook_db'
 const mongoose = require('mongoose')
-const Course = require('../../models/course')
-const User = require('../../models/user')
+const Course = require('../../app/models/course')
+const User = require('../../app/models/user')
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const courseData = require('./imi-b-courses')

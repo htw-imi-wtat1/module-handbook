@@ -34,6 +34,7 @@ if (sessionSecret === devSessionSecret) {
   console.log('WARNING! using unsecure default SESSION_SECRET')
 }
 
+app.set('views', path.join(__dirname, '/views'))
 router.use(cookieParser(sessionSecret))
 router.use(expressSession({
   secret: sessionSecret,
@@ -78,10 +79,10 @@ router.use(
 
 router.use(layouts)
 
-router.use(express.static(path.join(__dirname, '/public')))
-router.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')))
-router.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')))
-router.use(express.static(path.join(__dirname, '/node_modules/popper.js/dist')))
+router.use(express.static(path.join(__dirname, './public')))
+router.use(express.static(path.join(__dirname, '../node_modules/bootstrap/dist')))
+router.use(express.static(path.join(__dirname, '../node_modules/jquery/dist')))
+router.use(express.static(path.join(__dirname, '../node_modules/popper.js/dist')))
 
 router.use(
   express.urlencoded({
