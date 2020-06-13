@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongodb:
-    image: library/mongo:4.2-bionic
+    image: library/mongo:4.0-xenial
     container_name: 'modulehandbook-mongo'
     environment:
       - MONGO_INITDB_DATABASE=
@@ -16,11 +16,11 @@ services:
     restart: always
     build: .
     ports:
-      - "3004:3004"
+      - "3002:3002"
     links:
       - mongodb
     environment:
-      - PORT=3004
+      - PORT=3002
       - MONGODB_URI=mongodb://mongodb:27017/modulehandbook_db
     volumes:
       - .:/usr/src/app

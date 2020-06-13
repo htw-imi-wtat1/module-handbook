@@ -11,7 +11,6 @@ or
 ## EsLint
 
 https://github.com/cypress-io/eslint-plugin-cypress
-## First Test
 
 ## First Test
 
