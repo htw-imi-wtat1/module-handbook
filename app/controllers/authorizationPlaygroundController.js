@@ -10,20 +10,19 @@ module.exports = {
     next()
   },
   status: (req, res, next) => {
-    if (req.isAuthenticated()) {
-      res.send(`Logged in: ${req.user.fullName}`)
+    if (req.authProxyIsAuthenticated()) {
+      res.send(`Logged in: ${req.authProxyUser().fullName}`)
     } else {
       res.send('Not logged in')
     }
   },
   htmlView: (req, res) => {
     res.locals.authorizationPlaygroundLinks = ['open', 'requiresLogin', 'requiresLoginWithRedirect', 'requiresLoginWithRedirectFlash', 'status']
-    res.locals.user = req.user
+    res.locals.user = req.authProxyUser()
     let sessionID = req.signedCookies['connect.sid']
     if (typeof sessionID === 'undefined') { sessionID = 'none' }
     res.locals.sessionID = sessionID
     res.locals.url = req.url
-    res.locals.token = res.body.token
     res.render('authorizationPlayground/index')
   }
 

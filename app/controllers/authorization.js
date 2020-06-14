@@ -2,9 +2,9 @@
 
 const httpStatus = require('http-status-codes')
 module.exports = {
-  loggedIn: (options = {}) => {
+  requireLoggedIn: (options = {}) => {
     return (req, res, next) => {
-      if (req.isAuthenticated()) {
+      if (req.authProxyIsAuthenticated()) {
         next()
       } else {
         if (options.flash !== undefined) {

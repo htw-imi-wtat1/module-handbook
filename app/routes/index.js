@@ -80,6 +80,7 @@ router.use(function (req, res, next) {
 const menuItems = [
   { path: '/about', text: 'About' },
   { path: '/authorizationPlayground', text: 'Auth Playground' },
+  { path: '/info', text: 'App Info' },
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
@@ -94,10 +95,11 @@ router.use(function (req, res, next) {
   }
   next()
 })
+
 router.use((req, res, next) => {
   res.locals.flashMessages = req.flash()
-  res.locals.loggedIn = req.isAuthenticated()
-  res.locals.currentUser = req.user
+  res.locals.loggedIn = req.authProxyIsAuthenticated()
+  res.locals.currentUser = req.authProxyUser()
   next()
 })
 
@@ -110,6 +112,14 @@ router.use('/courses', courseRoutes)
 router.use('/users', userRoutes)
 router.use('/', homeRoutes)
 
+router.get('/info', (req, res) => {
+  res.send({
+    NODE_ENV: process.env.NODE_ENV,
+    loggedIn: res.locals.loggedIn,
+    user: req.authProxyUser(),
+    hallo: 'hallo'
+  })
+})
 const errorController = require('../controllers/errorController')
 router.use(errorController.pageNotFoundError)
 router.use(errorController.internalServerError)

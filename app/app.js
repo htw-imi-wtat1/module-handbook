@@ -20,6 +20,9 @@ passport.use(User.createStrategy())
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+const authenticationProxy = require('./proxies/authenticationProxy')
+authenticationProxy.defineProxy(app)
+
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
 
