@@ -1,4 +1,4 @@
-const { db } = require('../commonJest')
+const { db } = require('../../commonJest')
 describe('insert', () => {
   it('should insert a doc into collection', async done => {
     const users = db.collection('adhocusers')

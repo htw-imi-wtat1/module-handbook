@@ -1,5 +1,4 @@
-const { app, User, request, id } = require('../commonJest')
-const server = request.agent(app)
+const { app, request } = require('../commonJest')
 const httpStatus = require('http-status-codes')
 
 describe('unauthenticated', () => {
@@ -13,12 +12,12 @@ describe('unauthenticated', () => {
       .get('/authorizationPlayground/open')
       .expect(httpStatus.OK, done)
   })
-  it('restricted returns 200', done => {
+  it('restricted', done => {
     request(app)
       .get('/authorizationPlayground/requiresLogin')
       .expect(httpStatus.UNAUTHORIZED, done)
   })
-  it('restricted with redirect returns 200', done => {
+  it('restricted with redirect', done => {
     request(app)
       .get('/authorizationPlayground/requiresLoginWithRedirect')
       .expect(httpStatus.SEE_OTHER, done)

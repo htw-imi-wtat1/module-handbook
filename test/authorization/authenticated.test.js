@@ -1,11 +1,11 @@
-const { app, request, login, randomUserData } = require('../commonJest')
-
+const { app, request } = require('../commonJest')
+const { loginProxy } = require('../helper/loginProxy')
 const httpStatus = require('http-status-codes')
 
 describe('logged in', () => {
   let user
   beforeEach(async (done) => {
-    user = await login(randomUserData())
+    user = await loginProxy(app)
     done()
   })
   it('open returns ok', done => {
