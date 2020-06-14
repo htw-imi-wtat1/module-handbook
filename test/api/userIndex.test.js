@@ -82,7 +82,7 @@ describe('API: user list', () => {
       .get('/api/users')
       .set('token', jwt)
       .then((response) => {
-        expect(response.body.data.users.length).toBe(numberOfUsers)
+        expect(response.body.data.users.length).toBeGreaterThanOrEqual(numberOfUsers)
         done()
       })
   })

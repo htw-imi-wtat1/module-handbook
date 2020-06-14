@@ -1,15 +1,10 @@
-const { app, User, request, id } = require('../commonJest')
+const { app, User, request, id } = require('../../commonJest')
+const { sessionCookie } = require('../../helper/sessionCookie')
 
 const agent = request.agent(app)
 
-function sessionCookie (response) {
-  if (response.headers['set-cookie'] === undefined) {
-    return 'no cookies set'
-  }
-  return response.headers['set-cookie'].find((s) => s.startsWith('connect.sid'))
-}
 let firstSessionCookie = ''
-it('authentication does not work in tests using passport', async (done) => {
+it('authentication needs explicit user registration - does not work like this', async (done) => {
   const userData = {
     name: { first: 'Hannah', last: 'Fincke' },
     email: `timon.ringer_${id()}@gmail.com`,

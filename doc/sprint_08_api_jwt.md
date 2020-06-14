@@ -1,4 +1,4 @@
-# Sprint 08 - Building an API
+# Sprint 08 - Building an API & Authorization
 
 As an example for the api and authorization within the api I implement 2 simple stories:
 
@@ -32,4 +32,8 @@ an example how to use the logged in user to filter the result on page 343.
     curl -H "token: <copy token here>" http://localhost:3000/api/users
 
 - modified test in [test/api/userIndex.test.js](../test/api/userIndex.test.js) to work with jwt 
+
+#### Testing with Authentication
+
+see [authentication_authorization](./authentication_authorization.md)
 

@@ -60,6 +60,7 @@ router.use(
 )
 router.use(express.json())
 
+/*
 router.use(function (req, res, next) {
   console.log('-------------------------------')
   console.log('Time:', Date.now())
@@ -76,12 +77,11 @@ router.use(function (req, res, next) {
 
   next()
 })
-
+*/
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menuItems = [
   { path: '/about', text: 'About' },
   { path: '/authorizationPlayground', text: 'Auth Playground' },
-  { path: '/info', text: 'App Info' },
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },
   { path: '/courses', text: 'Courses' },
