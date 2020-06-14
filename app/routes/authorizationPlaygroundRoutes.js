@@ -7,17 +7,17 @@ router.get('/open', controller.open, controller.htmlView)
 router.get('/failureRedirect', controller.open, controller.htmlView)
 
 router.get('/requiresLogin',
-  auth.loggedIn(),
+  auth.requireLoggedIn(),
   controller.requiresLogin,
   controller.htmlView)
 
 router.get('/requiresLoginWithRedirect',
-  auth.loggedIn({ failureRedirect: '/authorizationPlayground/failureRedirect' }),
+  auth.requireLoggedIn({ failureRedirect: '/authorizationPlayground/failureRedirect' }),
   controller.requiresLogin,
   controller.htmlView)
 
 router.get('/requiresLoginWithRedirectFlash',
-  auth.loggedIn({ flash: 'Unauthorized - Redirected.', failureRedirect: '/authorizationPlayground/failureRedirect' }),
+  auth.requireLoggedIn({ flash: 'Unauthorized - Redirected.', failureRedirect: '/authorizationPlayground/failureRedirect' }),
   controller.requiresLogin,
   controller.htmlView)
 

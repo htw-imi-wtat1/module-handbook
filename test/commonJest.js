@@ -43,7 +43,48 @@ function removeIDs (text, ids) {
   })
   return result
 }
+
+async function login (userData) {
+  const user = await User.create(userData)
+  app.request.authProxyUser = function () {
+    return user
+  }
+  app.request.authProxyIsAuthenticated = function () {
+    return true
+  }
+  return user
+}
+
+function logout () {
+  app.request.authProxyUser = function () {
+    return 'no user'
+  }
+  app.request.authProxyIsAuthenticated = function () {
+    return false
+  }
+}
+
+const faker = require('faker')
+faker.locale = 'de'
+
+function randomUserData () {
+  const first = faker.name.firstName()
+  const last = faker.name.lastName()
+  const email = first + '.' + last + '__' + id() + '__@' + faker.internet.domainName()
+  return {
+    name: {
+      first: first,
+      last: last
+    },
+    email: email,
+    zipCode: faker.address.zipCode('#####'),
+    password: faker.internet.password()
+
+  }
+}
+
 const { id } = require('./helper/testHelpers')
+
 module.exports = {
   Course: Course,
   User: User,
@@ -53,5 +94,8 @@ module.exports = {
   id: id,
   removeID: removeID,
   removeIDs: removeIDs,
+  login: login,
+  logout: logout,
+  randomUserData: randomUserData,
   db: mongoose.connection
 }
