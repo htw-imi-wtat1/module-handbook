@@ -6,6 +6,7 @@ const { dateViewFormat } = require('../helper/date')
 const { classForState } = require('../helper/state')
 const passport = require('passport')
 const { body, check, validationResult } = require('express-validator')
+const jsonWebToken = require('jsonwebtoken')
 
 const getUserParams = body => {
   return {
@@ -171,5 +172,56 @@ module.exports = {
     failureFlash: 'Failed to login.',
     successRedirect: '/',
     successFlash: 'Logged in!'
-  })
+  }),
+
+  apiAuthenticate: (req, res, next) => {
+    passport.authenticate('local', (errors, user, info) => {
+      if (user) {
+        const signedToken = jsonWebToken.sign({
+          data: user._id,
+          exp: new Date().setDate(new Date().getDate() + 1)
+        },
+        process.env.JWT_SECRET || 'SET_SECRET_KEY_VIA_ENV_JWT_SECRET'
+        )
+        res.json({
+          success: true,
+          token: signedToken
+        })
+      } else {
+        res.json({ success: false, message: 'Could not authenticate user.' })
+      }
+    })(req, res, next)
+  },
+  verifyJWT: (req, res, next) => {
+    const token = req.headers.token
+    if (token) {
+      jsonWebToken.verify(token,
+        process.env.JWT_SECRET || 'SET_SECRET_KEY_VIA_ENV_JWT_SECRET',
+        (errors, payload) => {
+          if (payload) {
+            User.findById(payload.data).then(user => {
+              if (user) {
+                next()
+              } else {
+                res.status(httpStatus.FORBIDDEN).json({
+                  error: true,
+                  message: 'No User account found.'
+                })
+              }
+            })
+          } else {
+            res.status(httpStatus.UNAUTHORIZED).json({
+              error: true,
+              message: 'Cannot verify API token.'
+            })
+            next()
+          }
+        })
+    } else {
+      res.status(httpStatus.UNAUTHORIZED).json({
+        error: true,
+        message: 'Provide Token'
+      })
+    }
+  }
 }
