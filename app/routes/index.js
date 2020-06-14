@@ -5,6 +5,7 @@ const userRoutes = require('./userRoutes')
 const courseRoutes = require('./courseRoutes')
 const homeRoutes = require('./homeRoutes')
 const cookieRoutes = require('./cookieRoutes')
+const apiRoutes = require('./apiRoutes')
 const cookieController = require('../controllers/cookieController')
 const authorizationPlaygroundRoutes = require('./authorizationPlaygroundRoutes')
 // const errorRoutes = require('./errorRoutes')
@@ -110,6 +111,7 @@ router.use('/cookieBanner', cookieRoutes)
 
 router.use('/courses', courseRoutes)
 router.use('/users', userRoutes)
+router.use('/api', apiRoutes)
 router.use('/', homeRoutes)
 
 router.get('/info', (req, res) => {
