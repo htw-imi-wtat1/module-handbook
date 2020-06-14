@@ -20,3 +20,16 @@ an example how to use the logged in user to filter the result on page 343.
 #### Step 1: without authorization:
 - create test case: [test/api/userIndex.test.js](../test/api/userIndex.test.js)
 - define api route /api/users: [app/routes/apiRoutes.js](../app/routes/apiRoutes.js)
+
+#### JWT Authentication
+
+- npm install jsonwebtoken
+- add apiAuthenticate and verifyJWT to [usersController](../app/controllers/usersController.js): 
+- add api/login route to [apiRoutes](../app/routes/apiRoutes.js)
+- test with 
+
+    curl -d "email=barne@infrastructure.de&password=geheim12" http://localhost:3000/api/login
+    curl -H "token: <copy token here>" http://localhost:3000/api/users
+
+- modified test in [test/api/userIndex.test.js](../test/api/userIndex.test.js) to work with jwt 
+
