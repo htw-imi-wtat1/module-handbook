@@ -3,7 +3,7 @@ const router = require('express').Router()
 const coursesController = require('../controllers/coursesController')
 const usersController = require('../controllers/usersController')
 
-router.get('/', coursesController.index, usersController.indexView)
+router.get('/', coursesController.index, coursesController.indexView)
 router.get('/new', coursesController.new)
 router.post('', coursesController.create, usersController.redirectView)
 // app.get('/:id/edit', coursesController.edit)
