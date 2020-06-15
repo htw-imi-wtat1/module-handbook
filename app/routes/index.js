@@ -81,6 +81,7 @@ router.use(function (req, res, next) {
 // from https://stackoverflow.com/questions/9285880/node-js-express-js-how-to-override-intercept-res-render-function
 const menuItems = [
   { path: '/about', text: 'About' },
+  { path: '/chat', text: 'Chat', cssclass: 'chat-icon' },
   { path: '/authorizationPlayground', text: 'Auth Playground' },
   { path: '/modules/list', text: 'Module List' },
   { path: '/modules/tabular', text: 'Module Table' },

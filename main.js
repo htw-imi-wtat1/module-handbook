@@ -47,6 +47,9 @@ if (process.env.CYPRESS_TEST_RUN) {
 const app = require('./app/app')
 app.set('port', port)
 
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log(`Server running at http://localhost:${app.get('port')}`)
 })
+
+const io = require('socket.io')(server)
+const chatController = require('./app/controllers/chatController')(io)

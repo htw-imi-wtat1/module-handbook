@@ -1,0 +1,12 @@
+<h1>Chat</h1>
+<% if (currentUser) { %>
+    <form id="chatForm">
+        <input id="chat-input" type="text">
+        <input id="chat-user-id" type="hidden" value="<%= currentUser._id %>">
+        <input id="chat-user-name" type="hidden" value="<%=currentUser.fullName %>">
+        <input type="submit" id = "chat-submit-button" value="Send">
+    </form>
+    <div id="chat"></div>
+<% } else { %>
+    Please <a href="/users/login">log in</a> to use the chat.
+<%}%>

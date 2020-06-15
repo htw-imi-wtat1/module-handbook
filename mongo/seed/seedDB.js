@@ -27,7 +27,7 @@ for (let i = 0; i < 20; i = i + 1) {
       email: faker.internet.email(),
       zipCode: faker.address.zipCode('#####'),
       password: faker.internet.password()
-
+      // password: 'geheim12'
     })
 }
 console.log('userData ' + userData.length)

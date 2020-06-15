@@ -896,3 +896,6 @@ exports.showStudentView = (req, res) => {
 exports.showAbout = (req, res) => {
   res.render('about')
 }
+exports.chat = (req, res) => {
+  res.render('chat/chat')
+}
