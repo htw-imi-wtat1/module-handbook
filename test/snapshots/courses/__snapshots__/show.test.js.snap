@@ -14,6 +14,8 @@ exports[`Course Show renders course show correctly 1`] = `
 	<script src=\\"/jquery.min.js\\"></script>
 	<script src=\\"/popper.js\\"></script>
 	<script src=\\"/js/bootstrap.min.js\\"></script>
+	<script src=\\"/socket.io/socket.io.js\\"></script>
+	<script type=\\"text/javascript\\" src=\\"/js/chat.js\\"></script>
 </head>
 
 <body>
@@ -33,49 +35,56 @@ exports[`Course Show renders course show correctly 1`] = `
         <ul class=\\"navbar-nav mr-auto\\">
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/about\\">About
+    <a class=\\"nav-link \\" href=\\"/about\\">About
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/authorizationPlayground\\">Auth Playground
+    <a class=\\"nav-link chat-icon\\" href=\\"/chat\\">Chat
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/modules/list\\">Module List
+    <a class=\\"nav-link \\" href=\\"/authorizationPlayground\\">Auth Playground
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/modules/tabular\\">Module Table
+    <a class=\\"nav-link \\" href=\\"/modules/list\\">Module List
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/courses\\">Courses
+    <a class=\\"nav-link \\" href=\\"/modules/tabular\\">Module Table
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/users\\">Users
+    <a class=\\"nav-link \\" href=\\"/courses\\">Courses
         
     </a>
 </li>
 
             
                 <li class=\\"nav-item \\">
-    <a class=\\"nav-link\\" href=\\"/users/new\\">Register
+    <a class=\\"nav-link \\" href=\\"/users\\">Users
+        
+    </a>
+</li>
+
+            
+                <li class=\\"nav-item \\">
+    <a class=\\"nav-link \\" href=\\"/users/new\\">Register
         
     </a>
 </li>
