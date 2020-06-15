@@ -23,5 +23,6 @@ services:
       - PORT=3002
       - MONGODB_URI=mongodb://mongodb:27017/modulehandbook_db
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/usr/src/modulehandbook
+      - ./logs/docker-npm:/root/.npm/_logs/
+      - /usr/src/modulehandbook/node_modules
