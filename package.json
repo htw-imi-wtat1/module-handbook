@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node main.js",
     "start dev": "nodemon main.js",
-    "mongo": "docker-compose up -d",
-    "mongobash": "docker-compose exec mongo bash",
+    "startdocker": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "mongo": "docker-compose up -d mongodb",
+    "mongobash": "docker-compose exec mongodb bash",
     "test": "jest;cypress run",
     "test:jest": "jest",
     "test:watch": "jest --watch",

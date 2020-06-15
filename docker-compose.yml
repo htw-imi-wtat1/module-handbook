@@ -24,4 +24,5 @@ services:
       - MONGODB_URI=mongodb://mongodb:27017/modulehandbook_db
     volumes:
       - .:/usr/src/app
+      - ./logs/docker-npm:/root/.npm/_logs/
       - /usr/src/app/node_modules
