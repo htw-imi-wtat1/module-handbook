@@ -24,7 +24,6 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        wait-on: mongodb://localhost:27017
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm start
