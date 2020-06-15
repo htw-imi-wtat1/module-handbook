@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.4]
-        mongodb-version: [4.0, 4.2]
+        mongodb-version: [4.2]
     env:
       CYPRESS_TEST_RUN: true
 
@@ -24,7 +24,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        wait-on: http://localhost:27017
+        wait-on: mongodb://localhost:27017
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm start
