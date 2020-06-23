@@ -48,7 +48,7 @@ and an [example how to use them](../test/authorization/howToAuthenticateInTestsP
 
 Supertest, or better Superagent does save cookies if the requests are sent via 
 Superagent's Agent rather than supertest(app)- see [https://github.com/visionmedia/supertest](https://github.com/visionmedia/supertest)
-and the example in [howToAuthenticateInTestsPassport](../test/authorization/howToAuthenticateInTestsPassport.js)
+and the example in [howToAuthenticateInTestsPassport](../test/authorization/howToAuthenticateInTestsPassport.test.js)
 
     const agent = request.agent(app)
 

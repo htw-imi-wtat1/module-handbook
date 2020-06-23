@@ -1,6 +1,5 @@
 // copied from https://github.com/visionmedia/supertest
 const request = require('supertest')
-
 const express = require('express')
 
 describe('request.agent(app)', function () {
