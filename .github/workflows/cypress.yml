@@ -2,14 +2,14 @@
 name: End-to-end tests
 on: [push]
 jobs:
+  run:
+    echo "CYPRESS_TEST_RUN=true"  >> $GITHUB_ENV
   cypress-run:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14.4]
         mongodb-version: [4.2]
-    env:
-      CYPRESS_TEST_RUN: true
 
     steps:
     - name: Git checkout
