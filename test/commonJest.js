@@ -12,12 +12,15 @@ const User = require('../app/models/user')
 const Course = require('../app/models/course')
 
 const mongoose = require('mongoose')
-beforeAll(() => {
+beforeAll((done) => {
   process.env.NODE_ENV = 'test'
   mongoose.set('bufferCommands', false)
   mongoose.connect(mongodbURI,
     { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(console.log('connected to mongoose: ' + mongodbURI))
+    .then(() => {
+      console.log('connected to mongoose: ' + mongodbURI)
+      done()
+    })
     .catch(error => console.log('error creating connection to: ' + mongodbURI + error))
 
   mongoose.connection.on('error', err => {
